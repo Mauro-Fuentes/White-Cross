@@ -1,0 +1,38 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 30.12.2014 09:04:21
+
+newmtl Scythe
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.6400 0.6400 0.6400
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Osiris Scythe\Map\Scythe-d.tga
+	map_Kd F:\Osiris Scythe\Map\Scythe-d.tga
+	map_Ks F:\Osiris Scythe\Map\Scythe-s.tga
+	map_Ke F:\Osiris Scythe\Map\Scythe-m.tga
+	map_bump F:\Osiris Scythe\Map\Scythe-n.tga
+	bump F:\Osiris Scythe\Map\Scythe-n.tga
+
+newmtl Handle
+	Ns 96.0784
+	Ni 1.5000
+	d 1.0000
+	Tr 0.0000
+	Tf 1.0000 1.0000 1.0000 
+	illum 2
+	Ka 0.0000 0.0000 0.0000
+	Kd 0.6400 0.6400 0.6400
+	Ks 0.5000 0.5000 0.5000
+	Ke 0.0000 0.0000 0.0000
+	map_Ka F:\Osiris Scythe\Map\Handle-d.tga
+	map_Kd F:\Osiris Scythe\Map\Handle-d.tga
+	map_Ks F:\Osiris Scythe\Map\Handle-s.tga
+	map_Ke F:\Osiris Scythe\Map\Handle-m.tga
+	map_bump F:\Osiris Scythe\Map\Handle-n.tga
+	bump F:\Osiris Scythe\Map\Handle-n.tga

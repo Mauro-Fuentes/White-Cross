@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: 46f27fa1a2cce1542aabaaeefad9c840
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: TREE_HOUSE_1_agac
+    100004: TREE_HOUSE_1_basamaklar
+    100006: TREE_HOUSE_1_cati
+    100008: TREE_HOUSE_1_citler
+    100010: TREE_HOUSE_1_dam
+    100012: TREE_HOUSE_1_direkler
+    100014: TREE_HOUSE_1_ipler
+    100016: TREE_HOUSE_1_kirisler
+    100018: TREE_HOUSE_1_ustdirekler
+    100020: TREE_HOUSE_1_zemin
+    400000: //RootNode
+    400002: TREE_HOUSE_1_agac
+    400004: TREE_HOUSE_1_basamaklar
+    400006: TREE_HOUSE_1_cati
+    400008: TREE_HOUSE_1_citler
+    400010: TREE_HOUSE_1_dam
+    400012: TREE_HOUSE_1_direkler
+    400014: TREE_HOUSE_1_ipler
+    400016: TREE_HOUSE_1_kirisler
+    400018: TREE_HOUSE_1_ustdirekler
+    400020: TREE_HOUSE_1_zemin
+    2100000: TREE_HOUSE_1_agacMat
+    2100002: TREE_HOUSE_1_basamaklarMat
+    2100004: TREE_HOUSE_1_catiMat
+    2100006: TREE_HOUSE_1_citlerMat
+    2100008: TREE_HOUSE_1_damMat
+    2100010: TREE_HOUSE_1_direklerMat
+    2100012: TREE_HOUSE_1_iplerMat
+    2100014: TREE_HOUSE_1_kirislerMat
+    2100016: TREE_HOUSE_1_ustdireklerMat
+    2100018: TREE_HOUSE_1_zeminMat
+    2300000: TREE_HOUSE_1_agac
+    2300002: TREE_HOUSE_1_basamaklar
+    2300004: TREE_HOUSE_1_cati
+    2300006: TREE_HOUSE_1_citler
+    2300008: TREE_HOUSE_1_dam
+    2300010: TREE_HOUSE_1_direkler
+    2300012: TREE_HOUSE_1_ipler
+    2300014: TREE_HOUSE_1_kirisler
+    2300016: TREE_HOUSE_1_ustdirekler
+    2300018: TREE_HOUSE_1_zemin
+    3300000: TREE_HOUSE_1_agac
+    3300002: TREE_HOUSE_1_basamaklar
+    3300004: TREE_HOUSE_1_cati
+    3300006: TREE_HOUSE_1_citler
+    3300008: TREE_HOUSE_1_dam
+    3300010: TREE_HOUSE_1_direkler
+    3300012: TREE_HOUSE_1_ipler
+    3300014: TREE_HOUSE_1_kirisler
+    3300016: TREE_HOUSE_1_ustdirekler
+    3300018: TREE_HOUSE_1_zemin
+    4300000: TREE_HOUSE_1_agac
+    4300002: TREE_HOUSE_1_basamaklar
+    4300004: TREE_HOUSE_1_cati
+    4300006: TREE_HOUSE_1_citler
+    4300008: TREE_HOUSE_1_dam
+    4300010: TREE_HOUSE_1_direkler
+    4300012: TREE_HOUSE_1_ipler
+    4300014: TREE_HOUSE_1_kirisler
+    4300016: TREE_HOUSE_1_ustdirekler
+    4300018: TREE_HOUSE_1_zemin
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

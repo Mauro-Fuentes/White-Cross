@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40c29b3e9365ca448002cb8c586c6db, type: 3}
+  m_Name: Anna
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4857086888741284, guid: 1606d8d5d41ee1847856e23d4616aaa1,
+    type: 2}
+  weaponPrefab: {fileID: 1265043166806274, guid: bd2cd1f8002c6b445981d9f6a9d41dd4,
+    type: 2}
+  attackAnimation: {fileID: 7400000, guid: d82669b37833c5f4db716b82428a5ad6, type: 3}

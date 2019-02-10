@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d02853f5d34bd8f429969ac34c466d07
+labels:
+- Ray
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - walkCursor: {fileID: 2800000, guid: c8eebc34d9d6da343970d7df399f9dca, type: 3}
+  - enemyCursor: {fileID: 2800000, guid: e1abf6eb8fa8fdb4db39ff0af3bcdd08, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
