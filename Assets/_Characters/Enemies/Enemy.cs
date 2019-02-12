@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
-using RPG.Core;
-using RPG.Weapons;
+
+using RPG.Core; // TODO: rewire
+
 
 namespace RPG.Characters
 {
@@ -19,7 +20,6 @@ namespace RPG.Characters
 		[SerializeField] GameObject projectileSocket;
 		[SerializeField] Vector3 aimOffset = new Vector3 (0, 1f, 0);
 
-		AICharacterControl aiCharacterControlRef = null;
 
 		Player player = null;
 
@@ -33,7 +33,6 @@ namespace RPG.Characters
 		{
 			currentHealthPoints = maxHealthPoints;
 			player = FindObjectOfType <Player>();		// Find the player and fetchit
-			aiCharacterControlRef = GetComponent<AICharacterControl>();	// find the script AICHARAC
 		}
 
 		void Update()
@@ -68,11 +67,11 @@ namespace RPG.Characters
 			if (distanceToPlayer <= chaceRadious)
 			{
 				// Let's talk to the AICharacter control
-				aiCharacterControlRef.SetTarget (player.transform);
+				//aiCharacterControlRef.SetTarget (player.transform);
 			}
 			else
 			{
-				aiCharacterControlRef.SetTarget (transform);
+				//aiCharacterControlRef.SetTarget (transform);
 			}
 		}
 

@@ -26,10 +26,16 @@ namespace RPG.Characters
 		[SerializeField] AudioClip[] audioClips = null;
 
 		// only children can set this property
-		protected AbilityBehaviour Behaviour;
+		protected AbilityBehaviour behaviour;
 
-	
-		abstract public void AttachComponentTo (GameObject gameObjectToAttachTo); 
+		public abstract AbilityBehaviour GetBehaviourComponent (GameObject objectToAttachTo);
+
+		public void AttachAbilityTo (GameObject objectToAttachTo)
+		{
+			AbilityBehaviour behaviourComponent = GetBehaviourComponent (objectToAttachTo);
+			behaviourComponent.SetConfig(this);
+			behaviour = behaviourComponent;
+		} 
 		
 	
 		// Getter for the private particlePrefab
@@ -47,7 +53,7 @@ namespace RPG.Characters
 		// Implementation of Use() from interfase ISpecialAbility
 		public void Use(AbilityUseParams useParams)
 		{
-			Behaviour.Use(useParams);
+			behaviour.Use(useParams);
 		}
 
 		public AudioClip GetRandomAbilitySound()

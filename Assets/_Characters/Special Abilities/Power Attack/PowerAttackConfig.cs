@@ -15,15 +15,9 @@ namespace RPG.Characters
 		[SerializeField] float extraDamage = 10f;
 		
 		
-		// supongo que override lo que hace es tomar la clase abstracta de la que hereda y la hace propia.
-		public override void AttachComponentTo (GameObject gameObjectToAttachTo)
+		public override AbilityBehaviour GetBehaviourComponent (GameObject objectToAttachTo)
 		{
-			// Add a component PowerAttackBehaviour to that gameObject you passed on and stash it into behaviourComponent variable.
-			var behaviourComponent = gameObjectToAttachTo.AddComponent<PowerAttackBehaviour>();
-
-			behaviourComponent.SetConfig( this );
-
-			Behaviour = behaviourComponent;
+			return objectToAttachTo.AddComponent<PowerAttackBehaviour>();
 		}
 
 		public float GetExtraDamage()

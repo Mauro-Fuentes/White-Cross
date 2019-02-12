@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
  // TODO: decoupling 
 using RPG.CameraUI;
 using RPG.Core; 
-using RPG.Weapons;
 
 namespace RPG.Characters
 {
@@ -23,7 +22,7 @@ namespace RPG.Characters
 
 		[SerializeField] AnimatorOverrideController AnimatorOverrideController = null;
 		
-		[SerializeField] Weapon weaponInUse = null;	// tipo ScriptableObject
+		[SerializeField] Weapon currentWeaponConfig = null;	// tipo ScriptableObject
 
 		[Space(10)]	// Temporarily serialized for debug
 		[SerializeField] AbilityConfig [] abilities;
@@ -53,8 +52,9 @@ namespace RPG.Characters
 
 		const string DEATH_TRIGGER = "Die";
 		const string ATTACK_TRIGGER = "Attack";
+		const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 
-
+		GameObject weaponObject = null;
 
 		void Start ()
         {
@@ -64,13 +64,28 @@ namespace RPG.Characters
             
 			SetCurrentMaxHealth();
             
-			PutWeaponInHand();
+			PutWeaponInHand(currentWeaponConfig);
             
-			SetupRuntimeAnimator();
+			SetAttackAnimation();
 			
 			AttachInitialAbilities();
 			
         }
+
+		public void PutWeaponInHand (Weapon weaponToUse)
+		{
+			currentWeaponConfig = weaponToUse;
+
+			var weaponPrefab = weaponToUse.GetWeaponPrefab();
+
+			GameObject dominantHand = RequestDominantHand();
+			
+			Destroy(weaponObject); // empty hands
+
+			weaponObject = Instantiate (weaponPrefab, dominantHand.transform);
+			weaponObject.transform.localPosition = currentWeaponConfig.gripTransform.localPosition;
+			weaponObject.transform.localRotation= currentWeaponConfig.gripTransform.localRotation;
+		}
 
         private void AttachInitialAbilities()
         {
@@ -78,7 +93,7 @@ namespace RPG.Characters
             for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex ++)
 			{
 				// Add a component type SpecialAbilityConfig... pass this very same gameobject
-				abilities[abilityIndex].AttachComponentTo (gameObject);
+				abilities[abilityIndex].AttachAbilityTo (gameObject);
 				// this checks what ability the player has and add a CS file behaviour.
 			}
 			
@@ -155,24 +170,14 @@ namespace RPG.Characters
             currentHealthPoints = maxHealthPoints;  // Set max points
         }
 
-        private void SetupRuntimeAnimator()
+        private void SetAttackAnimation()
         {
 			animator = GetComponent<Animator>();							// fetch the AnimatorOverrideController and store it in animator
 			
 			animator.runtimeAnimatorController = AnimatorOverrideController;	// el runtimeAnimatorController lo alojas en la variable Animator del scope de la clase.
 
-			AnimatorOverrideController ["DEFAULT ATTACK"] = weaponInUse.GetAttackAnimClip(); 	// access animations list, finde the one called Default attack and change ir... override
+			AnimatorOverrideController [DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip(); 	// access animations list, finde the one called Default attack and change ir... override
         }
-
-        private void PutWeaponInHand()
-		{
-			var weaponPrefab = weaponInUse.GetWeaponPrefab();
-			GameObject dominantHand = RequestDominantHand();
-
-			var weapon = Instantiate (weaponPrefab, dominantHand.transform);
-			weapon.transform.localPosition = weaponInUse.gripTransform.localPosition;
-			weapon.transform.localRotation= weaponInUse.gripTransform.localRotation;
-		}
 
 		private GameObject RequestDominantHand()
 		{
@@ -228,8 +233,9 @@ namespace RPG.Characters
 
         private void AttackTarget()
         {
-			if (Time.time - lastHitTime > weaponInUse.GetMinTimeBetweenHits())
+			if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
             {
+				SetAttackAnimation();
                 animator.SetTrigger(ATTACK_TRIGGER);
                 enemy.TakeDamage ( CalculateDamage() );
                 lastHitTime = Time.time;
@@ -243,7 +249,7 @@ namespace RPG.Characters
 			bool isCriticalHit = UnityEngine.Random.Range (0f, 1f) <= criticalHitChange;
 			
 			// normal damage
-			float damageBeforeCritical = baseDamage + weaponInUse.GetAdditionalDamage();
+			float damageBeforeCritical = baseDamage + currentWeaponConfig.GetAdditionalDamage();
 
 			// #endregion
 			if (isCriticalHit)
@@ -261,7 +267,7 @@ namespace RPG.Characters
         private bool IsTargetInRange(GameObject target)
         {
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
-			return distanceToTarget <= weaponInUse.GetMaxAttackRange();
+			return distanceToTarget <= currentWeaponConfig.GetMaxAttackRange();
         }
 
 	}

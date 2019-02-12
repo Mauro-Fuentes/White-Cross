@@ -521,13 +521,12 @@ GameObject:
   - component: {fileID: 95712272076067452}
   - component: {fileID: 54584373704316126}
   - component: {fileID: 136150243862228468}
-  - component: {fileID: 114956647158034102}
   - component: {fileID: 195010866315730184}
-  - component: {fileID: 114293550609017490}
+  - component: {fileID: 82286399539571648}
   - component: {fileID: 114122756755515286}
   - component: {fileID: 114519531267455686}
+  - component: {fileID: 114956647158034102}
   - component: {fileID: 114886418108060086}
-  - component: {fileID: 82286399539571648}
   m_Layer: 11
   m_Name: Player
   m_TagString: Player
@@ -1700,8 +1699,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452756124479046}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.53, y: 0, z: -29.82}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.53, y: 0.126, z: -29.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4800752905469316}
@@ -2467,18 +2466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b60306147c0963f4cae250fc40f12203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114293550609017490
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1452756124479046}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  stoppingDistance: 1
 --- !u!114 &114519531267455686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2492,17 +2480,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 1000
   baseDamage: 10
-  criticalHitChange: 0.1
+  criticalHitChange: 0.583
   criticalHitMultiplier: 1.25
   AnimatorOverrideController: {fileID: 22100000, guid: 63f686429ccda5047a8f17721001e4fa,
     type: 2}
-  weaponInUse: {fileID: 11400000, guid: 0ae8f8a86cdb278488657f24eac86a69, type: 2}
+  currentWeaponConfig: {fileID: 11400000, guid: 0ae8f8a86cdb278488657f24eac86a69,
+    type: 2}
   abilities:
   - {fileID: 11400000, guid: 796fc6b53d1a73546b90c40a889ed781, type: 2}
   - {fileID: 11400000, guid: b6f0cef5d45ceec4fa96240bce7e2ba2, type: 2}
   - {fileID: 11400000, guid: 114517c2a4bfc0644a00b578c5045b50, type: 2}
   criticalHitParticles: {fileID: 198202506737507914}
-  volume: 0.01
+  volume: 0.554
   damageSounds:
   - {fileID: 8300000, guid: d1c3d65d761bc62499595e86015bf4fe, type: 3}
   - {fileID: 8300000, guid: b53a578f83bd0d04bb85b8eb0a64d456, type: 3}
@@ -2568,9 +2557,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.22
-  m_Height: 1.812417
+  m_Height: 2.0772185
   m_Direction: 1
-  m_Center: {x: 0, y: 1.1743627, z: 0}
+  m_Center: {x: 0, y: 1.0419619, z: 0}
 --- !u!137 &137535677689818780
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -2697,12 +2686,12 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1632841294960602}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
