@@ -523,9 +523,9 @@ GameObject:
   - component: {fileID: 136150243862228468}
   - component: {fileID: 195010866315730184}
   - component: {fileID: 82286399539571648}
+  - component: {fileID: 114956647158034102}
   - component: {fileID: 114122756755515286}
   - component: {fileID: 114519531267455686}
-  - component: {fileID: 114956647158034102}
   - component: {fileID: 114886418108060086}
   m_Layer: 11
   m_Name: Player
@@ -1700,7 +1700,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452756124479046}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53, y: 0.126, z: -29.82}
+  m_LocalPosition: {x: -0.53, y: 0.126, z: -19.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4800752905469316}
@@ -2467,6 +2467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stoppingDistance: 1
+  moveSpeedMultiplier: 0.7
 --- !u!114 &114519531267455686
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2480,7 +2481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 1000
   baseDamage: 10
-  criticalHitChange: 0.583
+  criticalHitChange: 0.375
   criticalHitMultiplier: 1.25
   AnimatorOverrideController: {fileID: 22100000, guid: 63f686429ccda5047a8f17721001e4fa,
     type: 2}
@@ -2539,14 +2540,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 300
-  m_StationaryTurnSpeed: 200
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 0.76
-  m_AnimSpeedMultiplier: 1.03
-  m_GroundCheckDistance: 1.16
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
 --- !u!136 &136150243862228468
 CapsuleCollider:
   m_ObjectHideFlags: 1

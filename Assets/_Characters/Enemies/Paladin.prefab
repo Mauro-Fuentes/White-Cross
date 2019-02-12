@@ -796,9 +796,7 @@ GameObject:
   - component: {fileID: 54087057282994374}
   - component: {fileID: 136906253254142824}
   - component: {fileID: 195048695765567812}
-  - component: {fileID: 114567851566660018}
   - component: {fileID: 114467886064424998}
-  - component: {fileID: 114155668538202734}
   m_Layer: 9
   m_Name: Paladin
   m_TagString: Untagged
@@ -2176,18 +2174,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114155668538202734
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666165167509904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c5335f0882fe4d478883cc8c58ce906, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
 --- !u!114 &114245545140404736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2249,25 +2235,6 @@ MonoBehaviour:
     type: 2}
   projectileSocket: {fileID: 1164980491373808}
   aimOffset: {x: 0, y: 1, z: 0}
---- !u!114 &114567851566660018
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1666165167509904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7a80d520cacc042b5fe14f373d8173, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_MovingTurnSpeed: 360
-  m_StationaryTurnSpeed: 180
-  m_JumpPower: 6
-  m_GravityMultiplier: 2
-  m_RunCycleLegOffset: 0.2
-  m_MoveSpeedMultiplier: 1
-  m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 1
 --- !u!114 &114825610384304834
 MonoBehaviour:
   m_ObjectHideFlags: 1

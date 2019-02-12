@@ -3,9 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
 
- // TODO: decoupling 
+// TODO: decoupling 
 using RPG.CameraUI;
 using RPG.Core; 
 
@@ -14,7 +13,6 @@ namespace RPG.Characters
 	public class Player : MonoBehaviour, IDamageable
 	{
  
-		[SerializeField] float maxHealthPoints = 100f;
 		[SerializeField] float baseDamage = 10f;
 		
 		[Range (.1f, 1.0f)] [SerializeField] float criticalHitChange = 0.1f;
@@ -29,28 +27,16 @@ namespace RPG.Characters
 
 		[SerializeField] ParticleSystem criticalHitParticles = null;
 
-		float currentHealthPoints = 0;
 		float lastHitTime = 0;
 
-		public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-		
-		AudioSource audioSource = null;
+
 		Enemy enemy = null;
 		Animator animator = null;
 		CameraRaycaster cameraRaycaster = null;
-
 		
-		[Header("Damage Volume")]
 		const float maxVolume = 1f;
 		const float minVolume = 0.01f;
-		[Space(10)]
-		[Range(minVolume, maxVolume)]
-		public float volume;
-		[SerializeField] AudioClip[] damageSounds;
-		[Space(10)]
-		[SerializeField] AudioClip[] deadSounds;
 
-		const string DEATH_TRIGGER = "Die";
 		const string ATTACK_TRIGGER = "Attack";
 		const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 
@@ -119,50 +105,6 @@ namespace RPG.Characters
 					AttemptSpecialAbility(keyIndex);
 				}
 			}
-		}
-
-		public void TakeDamage(float damage)
-		{	
-		
-			// Reduce health
-			currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
-			audioSource.Play();
-			
-			audioSource.clip = damageSounds[UnityEngine.Random.Range (0, damageSounds.Length)];
-			audioSource.volume = volume;
-
-			if (currentHealthPoints <= 0)
-			{
-				StartCoroutine(KillPlayer());
-			}
-			
-		}
-
-		public void Heal (float amount)
-		{
-			currentHealthPoints = Mathf.Clamp (currentHealthPoints + amount, 0f, maxHealthPoints);
-		}
-
-		IEnumerator KillPlayer()
-		{
-			animator.SetTrigger (DEATH_TRIGGER);
-
-			audioSource.clip = deadSounds[UnityEngine.Random.Range (0, deadSounds.Length)];
-			if (audioSource.isPlaying)
-			{
-				yield return new WaitForSecondsRealtime (audioSource.clip.length);
-			}
-			else
-			{
-				audioSource.volume = 0.7f;
-				audioSource.Play();
-			}
-
-			yield return new WaitForSecondsRealtime (audioSource.clip.length);
-			
-			yield return new WaitForSecondsRealtime (2f);
-
-			SceneManager.LoadScene (0);
 		}
 
         private void SetCurrentMaxHealth()

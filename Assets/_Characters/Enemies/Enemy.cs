@@ -8,7 +8,6 @@ namespace RPG.Characters
 	public class Enemy : MonoBehaviour, IDamageable
 	{
 
-		[SerializeField] float maxHealthPoints = 100f;
 		[SerializeField] float attackRadious = 5f;
 
 		[SerializeField] float chaceRadious = 5f;
@@ -20,13 +19,8 @@ namespace RPG.Characters
 		[SerializeField] GameObject projectileSocket;
 		[SerializeField] Vector3 aimOffset = new Vector3 (0, 1f, 0);
 
-
 		Player player = null;
-
-		float currentHealthPoints;
 		
-		public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; }	}
-
 		bool isAttacking = false;
 
 		void Start()
@@ -90,16 +84,6 @@ namespace RPG.Characters
 			//	Ahora vamos a crear directamente un método dentro de esa clase.
 			newProjectile.GetComponent<Rigidbody>().velocity = unitVectorToPlayer * projectileSpeed;
 		}
-
-
-		public void TakeDamage(float damage)
-		{
-			currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
-			
-			if (currentHealthPoints <= 0 )
-			{ Destroy (gameObject); }
-		}
-
 
 		void OnDrawGizmos()
 		{
