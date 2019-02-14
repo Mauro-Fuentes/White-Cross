@@ -1,18 +1,18 @@
 ﻿using UnityEngine;
 using RPG.Characters;
-using RPG.Core;
+
 
 public class AreaOfEffectBehaviour : AbilityBehaviour
 {
     // call the main functions from AbilityBehaviour.cs
-	public override void Use(AbilityUseParams useParams)
+	public override void Use(GameObject target)
     {
-        DealRadialDamage (useParams);
+        DealRadialDamage();
 		PlayParticleEffect();
         PlayAbilitySound();
     }
 
-    private void DealRadialDamage (AbilityUseParams useParams)
+    private void DealRadialDamage ()
     {
         // static sphere cast for targets
         RaycastHit[] hits = Physics.SphereCastAll
@@ -27,15 +27,15 @@ public class AreaOfEffectBehaviour : AbilityBehaviour
         foreach (RaycastHit hit in hits)
         {
             // check if it's IDamageable
-            var damageable = hit.collider.gameObject.GetComponent<IDamageable>();
+            var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
 
             // che if it's the player
-            bool hitPlayer = hit.collider.gameObject.GetComponent<Player>();
+            bool hitPlayer = hit.collider.gameObject.GetComponent<PlayerMovement>();
             
             // if it is | and it's NOT the player, AdjustHealth
             if (damageable != null && !hitPlayer)
             {
-                float damageToDeal = useParams.baseDamage + (config as AreaOfEffectConfig).GetDamageToEachTarget(); //TODO:
+                float damageToDeal = (config as AreaOfEffectConfig).GetDamageToEachTarget();
                 damageable.TakeDamage(damageToDeal);
             }
         }

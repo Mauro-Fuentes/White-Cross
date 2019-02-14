@@ -10,7 +10,7 @@ namespace RPG.Weapons
 	public class WeaponPickUp : MonoBehaviour
 	{
 
-		[SerializeField] Weapon weaponConfig;
+		[SerializeField] WeaponConfig weaponConfig;
 		[SerializeField] AudioClip pickWeaponSFX;
 
 		AudioSource audioSource;
@@ -43,14 +43,14 @@ namespace RPG.Weapons
 
         void InstantiateWeapon()
         {
-            var weapon = weaponConfig.GetWeaponPrefab();
-			weapon.transform.position = Vector3.zero;
-			Instantiate(weapon, gameObject.transform);
+            var WeaponSystem = weaponConfig.GetWeaponPrefab();
+			WeaponSystem.transform.position = Vector3.zero;
+			Instantiate(WeaponSystem, gameObject.transform);
         }
 
 		void OnTriggerEnter()
 		{
-			FindObjectOfType<Player>().PutWeaponInHand(weaponConfig);
+			FindObjectOfType<WeaponSystem>().PutWeaponInHand(weaponConfig);
 			audioSource.PlayOneShot(pickWeaponSFX);
 		}
     }

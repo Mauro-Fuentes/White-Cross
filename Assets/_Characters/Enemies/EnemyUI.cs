@@ -2,7 +2,7 @@
 
 namespace RPG.Characters
 {   
-    // Add a UI SOCKET transform to your enemy
+    // Add a UI SOCKET transform to your EnemyAI
     // Attach this script to the socket
     // Link to a canvas prefab that contains NPC UI
     public class EnemyUI : MonoBehaviour 

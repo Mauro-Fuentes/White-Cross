@@ -1,23 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Core;
 
 namespace RPG.Characters
 {
-	public struct AbilityUseParams
-	{
-		public IDamageable target;
-		public float baseDamage;
-
-		// Constructor
-		public AbilityUseParams (IDamageable target, float baseDamage)
-		{
-			this.target = target;
-			this.baseDamage = baseDamage;
-		}
-	}
-
 	public abstract class AbilityConfig : ScriptableObject		// Abstract porque no vamos a hacer ninguna instacia de esta clase.
 	{
 		[Header("Special Ability General")]
@@ -50,10 +36,9 @@ namespace RPG.Characters
 			return energyCost;
 		}
 
-		// Implementation of Use() from interfase ISpecialAbility
-		public void Use(AbilityUseParams useParams)
+		public void Use(GameObject target)
 		{
-			behaviour.Use(useParams);
+			behaviour.Use(target);
 		}
 
 		public AudioClip GetRandomAbilitySound()

@@ -1,30 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Characters;
-using RPG.Core;
 using System;
+
+using RPG.Characters;
 
 public class SelfHealBehaviour : AbilityBehaviour
 {
 
-    Player player = null;
+    PlayerMovement player = null;
 
     void Start()
     {
-        player = GetComponent<Player>();
+        player = GetComponent<PlayerMovement>();
     }
 
-	public override void Use(AbilityUseParams useParams)
+	public override void Use(GameObject target)
     {
-        RestoreLife (useParams);
-		PlayParticleEffect();
         PlayAbilitySound();
+        
+        var playerHealth = player.GetComponent<HealthSystem>();
+        playerHealth.Heal( (config as SelfHealConfig).GetAmountOfHeal() );
+
+		PlayParticleEffect();
+        
     }
 
-    private void RestoreLife (AbilityUseParams useParams)
-    {
-        player.Heal( (config as SelfHealConfig).GetAmountOfHeal() );
-
-    }
 }

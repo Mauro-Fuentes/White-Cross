@@ -24,8 +24,8 @@ namespace RPG.CameraUI
 		public delegate void OnMouseOverTerrain (Vector3 destination); 		// declare new delegate type
 		public event OnMouseOverTerrain onMouseOverPotenciallyWalkable;
 		
-		// OnMouseOverEnemy(Enemy enemy)			va a pasar la info del enemigo
-		public delegate void OnMouseOverEnemy (Enemy enemy); 		// declare new delegate type
+		// OnMouseOverEnemy(EnemyAI EnemyAI)			va a pasar la info del enemigo
+		public delegate void OnMouseOverEnemy (EnemyAI EnemyAI); 		// declare new delegate type
 		public event OnMouseOverEnemy onMouseOverEnemy;
 
 
@@ -68,16 +68,16 @@ namespace RPG.CameraUI
 			// Store the gameObject just hit in gameObjectHit variable.
 			var gameObjectHit = hitInfo.collider.gameObject;
 			
-			// Store the Enemy.cs component in enemyHit variable, identify it by component
-			var enemyHit = gameObjectHit.GetComponent<Enemy>();
+			// Store the EnemyAI.cs component in enemyHit variable, identify it by component
+			var enemyHit = gameObjectHit.GetComponent<EnemyAI>();
 
-			// If there is an enemyHit, if theres is a component Enemy Do this.
+			// If there is an enemyHit, if theres is a component EnemyAI Do this.
 			if (enemyHit)
 			{
 				// Change cursor
 				Cursor.SetCursor (enemyCursor, cursorHotspot, CursorMode.Auto);
 
-				// Broadcast, onMouseOverEnemy with the Enemy reference.
+				// Broadcast, onMouseOverEnemy with the EnemyAI reference.
 				onMouseOverEnemy(enemyHit);
 
 				// if we succed

@@ -9,7 +9,7 @@ namespace RPG.Characters
 {	
 	public class HealthSystem : MonoBehaviour
 	{
-
+		
 		[SerializeField] float maxHealthPoints = 100f;
 		[SerializeField] Image healthBar;
 
@@ -22,21 +22,17 @@ namespace RPG.Characters
 
 		float currentHealthPoints = 0;
 
-		Animator animator;
-				
+		Animator animator;	
 		AudioSource audioSource = null;
-
-		CharacterMovement characterMovement;
+		Character characterMovement;
 
 		public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-
-
 
 		void Start () 
 		{
 			animator = GetComponent<Animator>();
 			audioSource = GetComponent<AudioSource>();
-			characterMovement = GetComponent<CharacterMovement>();
+			characterMovement = GetComponent<Character>();
 
 			currentHealthPoints = maxHealthPoints;
 		}
@@ -81,7 +77,7 @@ namespace RPG.Characters
 			
 			animator.SetTrigger (DEATH_TRIGGER);
 
-			var playerComponent = GetComponent<Player>();
+			var playerComponent = GetComponent<PlayerMovement>();
 			if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
 			{
 				audioSource.clip = deathSounds [UnityEngine.Random.Range(0, deathSounds.Length)];

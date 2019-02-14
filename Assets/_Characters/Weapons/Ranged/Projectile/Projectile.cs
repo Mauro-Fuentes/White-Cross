@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using RPG.Core;
 
 namespace RPG.Characters
 {
@@ -36,25 +35,27 @@ namespace RPG.Characters
         {
             if (collision.gameObject.layer != gameObject.layer)
             {
-                DamageIfDamageable(collision);
+                //DamageIfDamageable(collision);
             }
 
         }
 
-        private void DamageIfDamageable(Collision collision)
-        {
-            /// DEALDAMAGE IF ITS DAMAGEABLE
-            //Debug.Log ("Projectyle hit " + other.name);
-            Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
+        // TODO:
 
-            if (damageableComponent)
-            {
-                // Debug.Log ("I hit " + damageableComponent );
-                // CAST Como Player hereda de dos Espacios diferentes le tenemos que decir de cual: (damageableComponent as IDamageable)
-                (damageableComponent as IDamageable).TakeDamage(damageCaused);
-            }
-            Destroy(gameObject, DESTROY_DELAY);
-        }
+        // private void DamageIfDamageable(Collision collision)
+        // {
+        //     /// DEALDAMAGE IF ITS DAMAGEABLE
+        //     //Debug.Log ("Projectyle hit " + other.name);
+        //     Component damageableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
+
+        //     if (damageableComponent)
+        //     {
+        //         // Debug.Log ("I hit " + damageableComponent );
+        //         // CAST Como Player hereda de dos Espacios diferentes le tenemos que decir de cual: (damageableComponent as IDamageable)
+        //         (damageableComponent as IDamageable).TakeDamage(damageCaused);
+        //     }
+        //     Destroy(gameObject, DESTROY_DELAY);
+        // }
 
         // void OnTriggerEnter(Collider other)
         // {
