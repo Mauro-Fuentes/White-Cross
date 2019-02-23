@@ -15,4 +15,5 @@ MonoBehaviour:
   particlePrefab: {fileID: 100004, guid: d9751637d4fc2de40a234b45e10cb88d, type: 2}
   audioClips:
   - {fileID: 8300000, guid: 35b44b8be8409354bb56f581fded6d99, type: 3}
-  amountOfHeal: 200
+  animationClip: {fileID: 7400000, guid: 884ca423a24fb5541b2c91f9986642a5, type: 3}
+  amountOfHeal: 500

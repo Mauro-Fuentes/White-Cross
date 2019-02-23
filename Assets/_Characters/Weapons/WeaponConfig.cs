@@ -11,19 +11,24 @@ namespace RPG.Characters
 		
 		[SerializeField] GameObject weaponPrefab;			// connect the GameObject.
 		[SerializeField] AnimationClip attackAnimation;		// animation attack
-		[SerializeField] float minTimeBetweenHits = 0.5f;
+		[SerializeField] float timeBetweenAnimationCycles = 0.5f;
 		[SerializeField] float maxAttackRange = 2f;
 		[SerializeField] float additionalDamage = 10f;
+		[SerializeField] float damageDelay = 0.5f;
 
-		public float GetMinTimeBetweenHits()
+		public float GetTimeBetweenCycles()
 		{
-			return minTimeBetweenHits;
+			return timeBetweenAnimationCycles;
 		}
 		public float GetMaxAttackRange()
 		{
 			return maxAttackRange;
 		}
 
+		public float GetDamageDelay()
+		{
+			return damageDelay;
+		}
 
 		public GameObject GetWeaponPrefab()		//método para obtener el gameobject.
 		{
@@ -40,6 +45,7 @@ namespace RPG.Characters
 		{
 			return additionalDamage; 
 		}
+		
 		// so that asset pack cannot cause crashes
         private void RemoveAnimationEvents()
         {

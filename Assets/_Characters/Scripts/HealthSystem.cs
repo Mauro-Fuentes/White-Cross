@@ -16,15 +16,19 @@ namespace RPG.Characters
 		[SerializeField] AudioClip[] damageSounds;
 		[SerializeField] AudioClip[] deathSounds;
 
-		[SerializeField] float deathVanishSeconds = 2;
+		//[SerializeField] float deathVanishSeconds = 1;
+
+		public GameObject particlePrefab;
 
 		const string DEATH_TRIGGER = "Die";
+		const float PARTICLE_CLEAN_UP_DELAY = 5f;
 
 		float currentHealthPoints = 0;
 
 		Animator animator;	
 		AudioSource audioSource = null;
 		Character characterMovement;
+		
 
 		public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -44,7 +48,7 @@ namespace RPG.Characters
 
         void UpdateHealthBar()
         {
-            if (healthBar) // may not habe health bars to update
+            if (healthBar) // may not have health bars to update
 			{
 				healthBar.fillAmount = healthAsPercentage;
 			}
@@ -52,7 +56,7 @@ namespace RPG.Characters
 
 		public void TakeDamage(float damage)
 		{	
-			bool characterDies = (currentHealthPoints - damage <= 0);
+			//bool characterDies = (currentHealthPoints - damage <= 0);
 
 			// Reduce health
 			currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
@@ -69,44 +73,54 @@ namespace RPG.Characters
 			
 		}
 
-		IEnumerator KillCharacter()
-		{
-			StopAllCoroutines();
-
-			characterMovement.Kill();
-			
-			animator.SetTrigger (DEATH_TRIGGER);
-
-			var playerComponent = GetComponent<PlayerMovement>();
-			if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
-			{
-				audioSource.clip = deathSounds [UnityEngine.Random.Range(0, deathSounds.Length)];
-			}
-
-			audioSource.clip = deathSounds[UnityEngine.Random.Range (0, deathSounds.Length)];
-			
-			// TODO: check for this audio
-			if (audioSource.isPlaying)
-			{
-				yield return new WaitForSecondsRealtime (audioSource.clip.length);
-			}
-			else
-			{
-				audioSource.Play();
-				Destroy(gameObject, deathVanishSeconds);
-			}
-
-			yield return new WaitForSecondsRealtime (audioSource.clip.length);
-			
-			yield return new WaitForSecondsRealtime (deathVanishSeconds);
-
-
-			SceneManager.LoadScene (0);
-		}
-
 		public void Heal (float amount)
 		{
 			currentHealthPoints = Mathf.Clamp (currentHealthPoints + amount, 0f, maxHealthPoints);
 		}
+
+		IEnumerator KillCharacter()
+		{
+			characterMovement.Kill();
+			
+			animator.SetTrigger (DEATH_TRIGGER);
+
+			audioSource.clip = deathSounds [UnityEngine.Random.Range(0, deathSounds.Length)];
+			audioSource.Play();
+			yield return new WaitForSecondsRealtime (audioSource.clip.length);
+
+			// reset the transform of particlePrefab, otherwise it doesn't work
+			particlePrefab.transform.position = new Vector3(0,0,0);
+			
+			var playDeathParticle = Instantiate ( particlePrefab, transform.position, particlePrefab.transform.rotation);
+			
+			playDeathParticle.transform.parent = transform;
+			
+			playDeathParticle.GetComponent<ParticleSystem>().Play();
+
+			StartCoroutine (DestroyParticle(playDeathParticle));
+
+			yield return new WaitForSecondsRealtime (audioSource.clip.length);
+		
+			var playerComponent = GetComponent<PlayerController>();
+
+			if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
+			{
+				yield return new WaitForSeconds(4); //TODO: take out magic number
+				SceneManager.LoadScene (0);
+			}
+			else
+			{
+				//Destroy(gameObject, deathVanishSeconds);
+			}
+
+		}
+
+		IEnumerator DestroyParticle(GameObject playDeathParticle)
+		{
+			yield return new WaitForSeconds (PARTICLE_CLEAN_UP_DELAY);
+			Destroy(playDeathParticle);
+			yield return new WaitForEndOfFrame();
+		}
+
     }
 }

@@ -20,7 +20,6 @@ namespace RPG.Weapons
 			audioSource = GetComponent<AudioSource>();
 		}
 
-
 		void Update () 
 		{
 			// if we are NOT in playing mode
@@ -48,9 +47,9 @@ namespace RPG.Weapons
 			Instantiate(WeaponSystem, gameObject.transform);
         }
 
-		void OnTriggerEnter()
+		void OnTriggerStay()
 		{
-			FindObjectOfType<WeaponSystem>().PutWeaponInHand(weaponConfig);
+			FindObjectOfType<PlayerController>().GetComponent<WeaponSystem>().PutWeaponInHand(weaponConfig);
 			audioSource.PlayOneShot(pickWeaponSFX);
 		}
     }

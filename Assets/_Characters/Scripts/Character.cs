@@ -12,9 +12,10 @@ namespace RPG.Characters
         [SerializeField] RuntimeAnimatorController animatorController;
         [SerializeField] AnimatorOverrideController animatorOverrideController;
         [SerializeField] Avatar characterAvatar;
+        [SerializeField] [Range (.1f, 1f)] float animatorHalfWay = 1f;
 
         [Header("Movement")]
-        [SerializeField] float stoppingDistance = 1f;
+        //[SerializeField] float stoppingDistance = 1f;
         [SerializeField] float moveSpeedMultiplier = 0.7f; 
         [SerializeField] float animationSpeedMultiplier = 1.5f;
         [SerializeField] float movingTurnSpeed = 360;
@@ -32,11 +33,11 @@ namespace RPG.Characters
         [SerializeField] float audioSourceSpatialBlend = 1;
         
         [Header("Navmesh Agent")]
-        NavMeshAgent navMeshAgent;
         [SerializeField] float navMeshAgentSteeringSpeed = 1.62f;
         [SerializeField] float navMeshAgentStoppingDistance = 1.44f;
         [SerializeField] float navMeshAgentBaseOffset = -0.02f;
         [SerializeField] float navMeshAgentRadius = 0.26f;
+        NavMeshAgent navMeshAgent;
         
         Animator animator;
         Rigidbody myRigidbody;
@@ -79,7 +80,12 @@ namespace RPG.Characters
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
+            if (!navMeshAgent.isOnNavMesh)
+            {
+                Debug.LogError (gameObject.name + "is not on the navmesh");
+            }
+
+            else if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
             {
                 Move(navMeshAgent.desiredVelocity);
             }
@@ -99,6 +105,11 @@ namespace RPG.Characters
             return animatorOverrideController;
         }
 
+        public float GetAnimSpeedMultiplier()
+        {
+            return animationSpeedMultiplier;
+        }
+
         void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
@@ -109,6 +120,7 @@ namespace RPG.Characters
         public void Kill()
         {
             isAlive = false;
+            navMeshAgent.isStopped = true;
         }
 
         void OnAnimatorMove()
@@ -149,7 +161,7 @@ namespace RPG.Characters
 
         void UpdateAnimator()
 		{
-			animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+			animator.SetFloat("Forward", forwardAmount * animatorHalfWay, 0.1f, Time.deltaTime);
 			animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
             animator.speed = animationSpeedMultiplier;
         

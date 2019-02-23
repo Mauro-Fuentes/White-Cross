@@ -53,7 +53,7 @@ namespace RPG.Characters
 
 		public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
-            var energyComponent = gameObject.GetComponent<SpecialAbilities>();
+            //var energyComponent = gameObject.GetComponent<SpecialAbilities>();
 			
 			var energyCost = abilities[abilityIndex].GetEnergyCost();
 
@@ -92,7 +92,11 @@ namespace RPG.Characters
 
         private void UpdateEnergyOrbBar()
         {
-            GreenOrbBar.fillAmount = 	energyAsPercent;
+			if (GreenOrbBar)
+			{
+				GreenOrbBar.fillAmount = 	energyAsPercent;
+			}
+            
         }
 
 		private void SetCurrentMaxEnergy()

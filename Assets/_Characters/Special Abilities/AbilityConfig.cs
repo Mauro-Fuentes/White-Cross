@@ -10,6 +10,7 @@ namespace RPG.Characters
 		[SerializeField] float energyCost = 10f;
 		[SerializeField] GameObject particlePrefab = null;
 		[SerializeField] AudioClip[] audioClips = null;
+		[SerializeField] AnimationClip animationClip = null;
 
 		// only children can set this property
 		protected AbilityBehaviour behaviour;
@@ -36,17 +37,23 @@ namespace RPG.Characters
 			return energyCost;
 		}
 
+		// Getter
+		public AudioClip GetRandomAbilitySound()
+		{
+			return audioClips[Random.Range(0, audioClips.Length)];
+		}
+
+		// Getter
+		public AnimationClip GetAnimationClip()
+		{
+			return animationClip;
+		}
+
 		public void Use(GameObject target)
 		{
 			behaviour.Use(target);
 		}
 
-		public AudioClip GetRandomAbilitySound()
-		{
-			return audioClips[Random.Range(0, audioClips.Length)];
-		}
 	}
 	
-
-
 }

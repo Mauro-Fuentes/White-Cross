@@ -8,13 +8,18 @@ public class ParticleComponent : ExploderComponent {
 	public float playbackSpeed = 1;
 	public override void onExplosionStarted(Exploder exploder)
 	{
-		GameObject container = (GameObject)GameObject.Instantiate(explosionEffectsContainer, transform.position, Quaternion.identity);
-		ParticleSystem[] systems = container.GetComponentsInChildren<ParticleSystem>();
-		foreach (ParticleSystem system in systems) {
-			system.startSpeed *= scale;
-			system.startSize *= scale;
-			system.transform.localScale *= scale;
-			system.playbackSpeed = playbackSpeed;
+		GameObject GameObjectContainer = (GameObject)GameObject.Instantiate(explosionEffectsContainer, transform.position, Quaternion.identity);
+		ParticleSystem[] particleSystemsArray = GameObjectContainer.GetComponentsInChildren<ParticleSystem>();
+		
+
+		foreach (ParticleSystem OneParticleSystem in particleSystemsArray) {
+			var oneInstanceOfParticleSystem = OneParticleSystem.main; 
+
+			oneInstanceOfParticleSystem.startSpeed = scale;
+			oneInstanceOfParticleSystem.startSize = scale;
+			OneParticleSystem.transform.localScale *= scale;
+			oneInstanceOfParticleSystem.simulationSpeed = playbackSpeed;
 		}
 	}
+
 }

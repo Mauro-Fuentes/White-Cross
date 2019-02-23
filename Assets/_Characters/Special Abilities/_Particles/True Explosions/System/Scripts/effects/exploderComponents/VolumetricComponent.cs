@@ -43,12 +43,6 @@ public class VolumetricComponent : ExploderComponent {
 	}
 
 	private void initParticleSystem() {
-		GetComponent<ParticleSystem>().maxParticles = maxParticles;
-		GetComponent<ParticleSystem>().emissionRate = 0;
-		GetComponent<ParticleSystem>().startSpeed = 0;
-		GetComponent<ParticleSystem>().startSize = 1.0f;
-		GetComponent<ParticleSystem>().simulationSpace = ParticleSystemSimulationSpace.World;
-		GetComponent<ParticleSystem>().startLifetime = duration;
 
 		GetComponent<ParticleSystem>().Emit(startEmission);
 		curCount = GetComponent<ParticleSystem>().GetParticles(particles);
@@ -56,7 +50,6 @@ public class VolumetricComponent : ExploderComponent {
 		for (int i = 0; i < curCount; i++) {
 			directions[i] = Random.onUnitSphere;
 			particles[i].position = transform.position;
-			particles[i].color = colorOverLifetime.Evaluate(0);
 		}
 
 		GetComponent<ParticleSystem>().SetParticles(particles, curCount);
@@ -102,9 +95,9 @@ public class VolumetricComponent : ExploderComponent {
 	}
 
 	private void makeStep() {
-		float curSize = 2 * speed * Mathf.Sqrt ((Time.time - exploder.explosionTime) / emission) * particleSizeMultiplyer;
-		for (int i = 0; i < curCount; i++) {
-			particles[i].size = curSize;
+		//float curSize = 2 * speed * Mathf.Sqrt ((Time.time - exploder.explosionTime) / emission) * particleSizeMultiplyer;
+		for (int i = 0; i < curCount; i++) 
+		{
 			moveParticle(i, Time.deltaTime * speed);
 			particles[i].rotation = Time.time;
 		}
@@ -118,9 +111,6 @@ public class VolumetricComponent : ExploderComponent {
 		float alpha = alphaOverLifetime.Evaluate((Time.time - exploder.explosionTime) / duration);
 		Color curColor = colorOverLifetime.Evaluate((Time.time - exploder.explosionTime) / duration);
 		curColor.a = alpha;
-		for (int i = 0; i < curCount; i++) {
-			particles[i].color = curColor;
-		}
 	}
 	
 	IEnumerator emulate() {

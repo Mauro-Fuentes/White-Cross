@@ -17,21 +17,20 @@ namespace RPG.CameraUI
 		float maxRaycastDepth = 100f; 		// Hard coded value
 
 		// ScreenRect
-		Rect screenRectAtStartPlay = new Rect(0, 0, Screen.width, Screen.height);
+		Rect currentScreenRect;
 
-		// New delegates
-		// OnMouseOverTerrain(Vector3 destination)     va a pasar la info del mouse
+		// OnMouseOverEnemy(EnemyAI enemy)							va a pasar la info del enemigo
+		public delegate void OnMouseOverEnemy (EnemyAI enemy); 		// declare new delegate type
+		public event OnMouseOverEnemy onMouseOverEnemy;
+		
+		// OnMouseOverTerrain(Vector3 destination)     						va a pasar la info del mouse
 		public delegate void OnMouseOverTerrain (Vector3 destination); 		// declare new delegate type
 		public event OnMouseOverTerrain onMouseOverPotenciallyWalkable;
 		
-		// OnMouseOverEnemy(EnemyAI EnemyAI)			va a pasar la info del enemigo
-		public delegate void OnMouseOverEnemy (EnemyAI EnemyAI); 		// declare new delegate type
-		public event OnMouseOverEnemy onMouseOverEnemy;
-
-
-
 		void Update()
         {
+			currentScreenRect = new Rect(0, 0, Screen.width, Screen.height);
+
             // Check if pointer is over an interactable UI element
             if (EventSystem.current.IsPointerOverGameObject()) // UI GameObject
             {
@@ -46,7 +45,7 @@ namespace RPG.CameraUI
 		
 		void PerformRaycast()
 		{
-			if (screenRectAtStartPlay.Contains(Input.mousePosition))
+			if (currentScreenRect.Contains(Input.mousePosition))
 			{	
 				Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 				

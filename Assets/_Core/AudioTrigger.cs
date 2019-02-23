@@ -2,29 +2,31 @@
 
 public class AudioTrigger : MonoBehaviour
 {
+    // serialized
     [SerializeField] AudioClip clip;
-    [SerializeField] int layerFilter = 0;
-    [SerializeField] float triggerRadius = 5f;
+    //[SerializeField] int layerFilter = 11;
+    [SerializeField] float playerDistanceThreshold = 1f;
     [SerializeField] bool isOneTimeOnly = true;
 
-    [SerializeField] bool hasPlayed = false;
+    // private
+    bool hasPlayed = false;
     AudioSource audioSource;
+    GameObject player; // will only 
 
     void Start()
     {
         audioSource = gameObject.AddComponent<AudioSource>();
+        player = GameObject.FindGameObjectWithTag("Player");
+
         audioSource.playOnAwake = false;
         audioSource.clip = clip;
-
-        SphereCollider sphereCollider = gameObject.AddComponent<SphereCollider>();
-        sphereCollider.isTrigger = true;
-        sphereCollider.radius = triggerRadius;
-        gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
     }
 
-    void OnTriggerEnter(Collider other)		// when you enter other trigger collider
+    void Update()
     {
-        if (other.gameObject.layer == layerFilter)
+        float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+
+        if (distanceToPlayer <= playerDistanceThreshold)
         {
             RequestPlayAudioClip();
         }
@@ -46,6 +48,6 @@ public class AudioTrigger : MonoBehaviour
     void OnDrawGizmos()
     {
         Gizmos.color = new Color(0, 255f, 0, .5f);
-        Gizmos.DrawWireSphere(transform.position, triggerRadius);
+        Gizmos.DrawWireSphere(transform.position, playerDistanceThreshold);
     }
 }

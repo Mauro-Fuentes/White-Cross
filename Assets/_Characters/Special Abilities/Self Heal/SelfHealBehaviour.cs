@@ -8,11 +8,11 @@ using RPG.Characters;
 public class SelfHealBehaviour : AbilityBehaviour
 {
 
-    PlayerMovement player = null;
+    PlayerController player = null;
 
     void Start()
     {
-        player = GetComponent<PlayerMovement>();
+        player = GetComponent<PlayerController>();
     }
 
 	public override void Use(GameObject target)
@@ -23,7 +23,7 @@ public class SelfHealBehaviour : AbilityBehaviour
         playerHealth.Heal( (config as SelfHealConfig).GetAmountOfHeal() );
 
 		PlayParticleEffect();
-        
+        PlayAnimationClip();
     }
 
 }

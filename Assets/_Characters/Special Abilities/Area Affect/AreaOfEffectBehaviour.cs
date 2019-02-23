@@ -10,6 +10,7 @@ public class AreaOfEffectBehaviour : AbilityBehaviour
         DealRadialDamage();
 		PlayParticleEffect();
         PlayAbilitySound();
+        PlayAnimationClip();
     }
 
     private void DealRadialDamage ()
@@ -30,7 +31,7 @@ public class AreaOfEffectBehaviour : AbilityBehaviour
             var damageable = hit.collider.gameObject.GetComponent<HealthSystem>();
 
             // che if it's the player
-            bool hitPlayer = hit.collider.gameObject.GetComponent<PlayerMovement>();
+            bool hitPlayer = hit.collider.gameObject.GetComponent<PlayerController>();
             
             // if it is | and it's NOT the player, AdjustHealth
             if (damageable != null && !hitPlayer)
