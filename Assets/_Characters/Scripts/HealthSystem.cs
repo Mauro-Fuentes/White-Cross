@@ -106,7 +106,7 @@ namespace RPG.Characters
 			if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
 			{
 				yield return new WaitForSeconds(4); //TODO: take out magic number
-				SceneManager.LoadScene (0);
+				SceneManager.LoadScene (0); // TODO:
 			}
 			else
 			{

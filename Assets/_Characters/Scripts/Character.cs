@@ -133,6 +133,7 @@ namespace RPG.Characters
                 velocity.y = myRigidbody.velocity.y;
                 myRigidbody.velocity = velocity;
             }
+
         }
 
         void SetForwardAndTurn(Vector3 movement)

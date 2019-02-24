@@ -5,14 +5,15 @@ namespace RPG.Characters
 
     public class UIFaceCamera : MonoBehaviour 
     {
-
-        Camera cameraToLookAt;
+        public GameObject cameraToSearch;
+        public Camera cameraToLookAt;
 
         void Start()
         {
-            // Buscamos la camara principal
-            cameraToLookAt = Camera.main;
-
+            cameraToSearch = GameObject.FindGameObjectWithTag ("MainCamera");
+            cameraToLookAt = cameraToSearch.GetComponent<Camera>();
+            
+            //cameraToLookAt = Camera.main;
         }
 
         void LateUpdate()
