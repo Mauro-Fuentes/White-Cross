@@ -17,7 +17,7 @@ public class DialogueManager : MonoBehaviour
 		sentences = new Queue<string>();
 	}
 
-	public void StartDialogue(Dialogue dialogue)
+	public void StartDialogue(Dialogue_new dialogue)
 	{
 		animator.SetBool ("DialogueIsIN", true);
 

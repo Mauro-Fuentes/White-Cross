@@ -6,12 +6,16 @@ using UnityEngine;
 public class State : ScriptableObject
 {
 	[TextArea (10, 14)] [SerializeField] string storyText;
+	[SerializeField] State [] nextState;
 
-	
-
-	public string GetStateStory(string pieceOfStoryText)
+	public string GetStateStory()
 	{
-		return pieceOfStoryText;
+		return storyText;
+	}
+
+	public State [] GetNextState()
+	{
+		return nextState;
 	}
 }
 

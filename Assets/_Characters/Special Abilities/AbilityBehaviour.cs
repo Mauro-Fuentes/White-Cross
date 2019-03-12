@@ -14,7 +14,7 @@ namespace RPG.Characters
 
 		public abstract void Use(GameObject target = null);
 
-		// Getter
+		// Setter
 		public void SetConfig (AbilityConfig configToSet)
 		{
 			config = configToSet;

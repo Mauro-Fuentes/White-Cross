@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56be8d80c43f08c4a80374b487738c6b, type: 3}
   m_Name: Power Attack L1
   m_EditorClassIdentifier: 
-  energyCost: 10
+  energyCost: 3
   particlePrefab: {fileID: 1899724461870960, guid: 59df0f563f95c764e87867ff8ddcdb83,
     type: 2}
   audioClips:

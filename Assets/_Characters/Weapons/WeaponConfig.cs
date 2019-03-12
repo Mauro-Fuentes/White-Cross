@@ -8,7 +8,7 @@ namespace RPG.Characters
 	public class WeaponConfig : ScriptableObject
 	{
 		public Transform gripTransform;						// quiero dejarlo publico para que todos puedan cambiarlo
-		
+
 		[SerializeField] GameObject weaponPrefab;			// connect the GameObject.
 		[SerializeField] AnimationClip attackAnimation;		// animation attack
 		[SerializeField] float timeBetweenAnimationCycles = 0.5f;
@@ -16,10 +16,13 @@ namespace RPG.Characters
 		[SerializeField] float additionalDamage = 10f;
 		[SerializeField] float damageDelay = 0.5f;
 
+		[SerializeField] GameObject particlePrefab;
+
 		public float GetTimeBetweenCycles()
 		{
 			return timeBetweenAnimationCycles;
 		}
+
 		public float GetMaxAttackRange()
 		{
 			return maxAttackRange;
@@ -33,6 +36,11 @@ namespace RPG.Characters
 		public GameObject GetWeaponPrefab()		//método para obtener el gameobject.
 		{
 			return weaponPrefab;
+		}
+
+		public GameObject GetParticlePrefab()
+		{
+			return particlePrefab;
 		}
 
 		public AnimationClip GetAttackAnimClip()

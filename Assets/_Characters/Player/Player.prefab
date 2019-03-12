@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 114886418108060086}
   - component: {fileID: 114294719566545816}
   - component: {fileID: 114050202196007450}
+  - component: {fileID: 114656274189495752}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2381,6 +2382,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6283fc765932c054f9574fc4f9bbac11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114656274189495752
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452756124479046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1362edef40f26994ca50572ff23df1b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkingSounds:
+  - {fileID: 8300000, guid: 98c8946a47ec430428fb194f76ac742e, type: 3}
+  - {fileID: 8300000, guid: b53c8fcb201b2a541b4ac45e22defc82, type: 3}
+  - {fileID: 8300000, guid: 55287575d984f8748b3df9b581b71544, type: 3}
+  - {fileID: 8300000, guid: 5f8020a411336bb4d8bea3f06aba8baa, type: 3}
 --- !u!114 &114740533584193340
 MonoBehaviour:
   m_ObjectHideFlags: 1

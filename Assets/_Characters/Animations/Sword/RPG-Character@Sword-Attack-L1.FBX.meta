@@ -291,9 +291,10 @@ ModelImporter:
       curves: []
       events:
       - time: 0.54720175
-        functionName: Hit
+        functionName: PlaySound ()
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: a36ef05d9271848498543d1da5f3c749,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

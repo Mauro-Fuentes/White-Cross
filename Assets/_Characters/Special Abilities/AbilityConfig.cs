@@ -13,7 +13,7 @@ namespace RPG.Characters
 		[SerializeField] AnimationClip animationClip = null;
 
 		// only children can set this property
-		protected AbilityBehaviour behaviour;
+		protected AbilityBehaviour abilityBehaviourRef;
 
 		public abstract AbilityBehaviour GetBehaviourComponent (GameObject objectToAttachTo);
 
@@ -21,7 +21,7 @@ namespace RPG.Characters
 		{
 			AbilityBehaviour behaviourComponent = GetBehaviourComponent (objectToAttachTo);
 			behaviourComponent.SetConfig(this);
-			behaviour = behaviourComponent;
+			abilityBehaviourRef = behaviourComponent;
 		} 
 		
 	
@@ -51,7 +51,7 @@ namespace RPG.Characters
 
 		public void Use(GameObject target)
 		{
-			behaviour.Use(target);
+			abilityBehaviourRef.Use(target);
 		}
 
 	}

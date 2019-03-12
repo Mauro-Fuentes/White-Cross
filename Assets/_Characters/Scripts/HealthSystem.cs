@@ -37,6 +37,7 @@ namespace RPG.Characters
 			animator = GetComponent<Animator>();
 			audioSource = GetComponent<AudioSource>();
 			characterMovement = GetComponent<Character>();
+			
 
 			currentHealthPoints = maxHealthPoints;
 		}

@@ -10,9 +10,7 @@ namespace RPG.CameraUI
 
 		void Start () 
 		{
-			// Static funcion of Unity
 			player = GameObject.FindGameObjectWithTag("Player");
-
 		}
 
 		void LateUpdate()

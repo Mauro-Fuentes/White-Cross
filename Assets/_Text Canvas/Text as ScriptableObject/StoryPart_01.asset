@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Name: StoryPart_01
   m_EditorClassIdentifier: 
   storyText: This is the first part of the story.
+  nextState:
+  - {fileID: 11400000, guid: fb2e08e18cbb33345b4d92d32901d078, type: 2}

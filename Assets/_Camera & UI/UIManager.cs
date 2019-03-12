@@ -2,77 +2,147 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class UIManager : MonoBehaviour
 {
-
 	Scene nextScene;
+	Scene currentScene;
 
 	[SerializeField] Button beginButton;
+	[SerializeField] Image loadingBar;
 
-	bool beginButtonHasBeenPressed = false;
+	public Text loadingText;
 
-	bool CoroutineIsRunning = true;
+	bool startButtonHasBeenPressed;
+	bool LoadSceneBackgroundCoroutineFinished;
+
+	[SerializeField] AudioClip audioClickButton;
+	[SerializeField] AudioSource audioSource;
+
+	AsyncOperation asyncloadSceneInTheBackground;
 
 	void Start()
 	{
-		StartCoroutine (LoadNextSceneInTheBackground());
+        //loadingBar.gameObject.SetActive(false);
+		loadingBar.gameObject.SetActive(true);
+
+		currentScene = SceneManager.GetActiveScene();
 	
-		beginButton.onClick.AddListener(OnClickBeginButton);
+		beginButton.onClick.AddListener(OnClickButton);
+
+		loadingText.text = "Loading...";
+
+		audioSource = GetComponent<AudioSource>();
+
+		// the coroutine hangs until 90% and waits for permission: buttonHasBeenPressed 
+		StartCoroutine (LoadNextSceneInTheBackground());
 	}
 
 	void Update()
+    {
+        UpdateLoadingBar();
+
+		// Once asyncLoad is finished, check if Start button is pressed
+		if (LoadSceneBackgroundCoroutineFinished == true)
+        {
+            SetActiveScene();
+        }
+    }
+
+    public void OnClickButton()
 	{
-		if (CoroutineIsRunning == false)
-		{
-			SetActiveScene();
-		}
+		StartCoroutine ( WaitForTheSound() );
+			
 	}
+
+    private void UpdateLoadingBar()
+    {
+        float progress = Mathf.Clamp01(asyncloadSceneInTheBackground.progress / 0.9f);
+        loadingBar.fillAmount = progress;
+        loadingText.text = progress * 100f + "%";
+    }
+
 
 
     IEnumerator LoadNextSceneInTheBackground()
     {
-		AsyncOperation loadSceneInTheBackground = SceneManager.LoadSceneAsync ( 1 , LoadSceneMode.Additive);
-
-		loadSceneInTheBackground.allowSceneActivation = false;
+		asyncloadSceneInTheBackground = SceneManager.LoadSceneAsync ( GetNextSceneName() , LoadSceneMode.Additive);
+		asyncloadSceneInTheBackground.allowSceneActivation = false;
 
 		// wait until it loads
-		while (!loadSceneInTheBackground.isDone)
-		{
-			if (loadSceneInTheBackground.progress <= 0.9f)
+		while (!asyncloadSceneInTheBackground.isDone)
+		{	
+			if (asyncloadSceneInTheBackground.progress <= 0.9f)
 			{
-				if (beginButtonHasBeenPressed)
-				{
-                    //Activate the Scene
-                    loadSceneInTheBackground.allowSceneActivation = true;
-
-					// print (loadSceneInTheBackground.progress);
-					CoroutineIsRunning = false;
-
-            	}
+				break;
 			}
-			yield return  null;
 		}
+		yield return  null;
     }
-
-	public void OnClickBeginButton()
-	{
-		print ("BUTTON PRESSED");
-		beginButtonHasBeenPressed = true;
-	}
 
     public void SetActiveScene () 
 	{
-		nextScene = SceneManager.GetSceneByBuildIndex(1);
+		AsyncOperation UnloadOldScene = SceneManager.UnloadSceneAsync(currentScene);
 
-		AsyncOperation UnloadScene = SceneManager.UnloadSceneAsync(0);
-
-		if (UnloadScene.isDone)
+		if (UnloadOldScene.isDone)
 		{
-			print ("unload finished");
 			SceneManager.SetActiveScene(nextScene);
 		}
-
 	}
 
+	IEnumerator WaitForTheSound()
+    {
+		audioSource.PlayOneShot(audioClickButton);
+
+		yield return new WaitWhile(audioFinished);
+
+		startButtonHasBeenPressed = true;
+
+		if (startButtonHasBeenPressed)
+		{
+			//Activate the Scene
+			asyncloadSceneInTheBackground.allowSceneActivation = true;
+
+			LoadSceneBackgroundCoroutineFinished = true;
+		}	
+	}
+
+	public bool audioFinished()
+	{
+		if (audioSource.isPlaying)
+		{
+			return true;
+		}
+		else 
+		{	
+			return false;
+		}
+	}
+
+
+	// "Level +1"
+	public string GetNextSceneName()
+	{
+		var nextSceneIndex = SceneManager.GetActiveScene().buildIndex +1;
+
+		if (nextSceneIndex < SceneManager.sceneCountInBuildSettings)
+		{
+			return GetSceneNameByBuildIndex(nextSceneIndex);
+		}
+		return string.Empty;
+	}
+
+	public string GetSceneNameByBuildIndex(int buildIndex)
+	{
+		return GetSceneNameFromScenePath (SceneUtility.GetScenePathByBuildIndex (buildIndex));
+	}
+
+	private string GetSceneNameFromScenePath (string scenePath)
+	{
+		var sceneNameStart = scenePath.LastIndexOf ("/", StringComparison.Ordinal ) +1;
+		var sceneNameEnd = scenePath.LastIndexOf (".", StringComparison.Ordinal);
+		var sceneNameLength = sceneNameEnd - sceneNameStart;
+		return scenePath.Substring (sceneNameStart, sceneNameLength);
+	}
 }

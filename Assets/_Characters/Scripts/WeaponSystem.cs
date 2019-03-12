@@ -7,9 +7,11 @@ namespace RPG.Characters
 {
 	public class WeaponSystem : MonoBehaviour
 	{
-
+	
 		[SerializeField] float baseDamage = 10f;
 		[SerializeField] WeaponConfig currentWeaponConfig;	// tipo ScriptableObject
+
+		public float speed = 200f;
 
 		GameObject target;
 		GameObject weaponObject;
@@ -28,6 +30,7 @@ namespace RPG.Characters
 			PutWeaponInHand(currentWeaponConfig);
 			animator = GetComponent<Animator>();
 			character = GetComponent<Character>();
+
 			SetAttackAnimation();
 		}
 
@@ -139,7 +142,20 @@ namespace RPG.Characters
 			SetAttackAnimation();
 
 			StartCoroutine (DamageAfterDelay (damageDelay));
+
+			if (currentWeaponConfig.GetParticlePrefab() != null)
+			{
+				GetWeaponFXPrefab();
+			}
+			else
+			{
+				return;
+			}
+			
         }
+
+
+        
 
         IEnumerator DamageAfterDelay(float delay)
         {
@@ -159,6 +175,8 @@ namespace RPG.Characters
 				var animatorOverrideController = character.GetAnimatorOverrideController();			
 				animator.runtimeAnimatorController = character.GetAnimatorOverrideController();	// el runtimeAnimatorController lo alojas en la variable Animator del scope de la clase.
 				animatorOverrideController [DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip(); 	// access animations list, find the one called Default attack and change ir... override
+				
+
 			}
         }
 
@@ -181,6 +199,18 @@ namespace RPG.Characters
 			// normal damage
 			return baseDamage + currentWeaponConfig.GetAdditionalDamage();
         }
+
+
+		public GameObject GetWeaponFXPrefab()
+		{
+
+			var originalObj = currentWeaponConfig.GetParticlePrefab();
+			
+			GameObject cloneObject = Instantiate (originalObj, transform.position, transform.localRotation);
+			cloneObject.transform.parent = transform;
+
+			return cloneObject;
+		}
 
 	}
 }

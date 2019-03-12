@@ -8,18 +8,49 @@ namespace RPG.Characters
         public GameObject cameraToSearch;
         public Camera cameraToLookAt;
 
-        void Start()
+
+        // public static UIFaceCamera uIFaceCameraSingleton {get; private set;}
+
+
+        void Awake()
         {
-            cameraToSearch = GameObject.FindGameObjectWithTag ("MainCamera");
+            while (cameraToSearch == null)
+            {
+                cameraToSearch = GameObject.FindGameObjectWithTag ("MainCamera");
+                if (cameraToSearch != null)
+                {
+                    break;
+                }
+            }
+
+            //cameraToSearch = GameObject.FindGameObjectWithTag ("MainCamera");
+      
+            
+            // if (uIFaceCameraSingleton == null)				// Si el tipo MyGameManager uIFaceCameraSingleton no está
+            // {	
+
+            //     uIFaceCameraSingleton = this;				// Hacer una instancia this (MyGameManager)
+
+            //     //DontDestroyOnLoad (uIFaceCameraSingleton);	            // Este gameObject
+            // }
+            // else
+            // {
+            //     Destroy(gameObject);	
+            // }
+
             cameraToLookAt = cameraToSearch.GetComponent<Camera>();
             
-            //cameraToLookAt = Camera.main;
+            cameraToLookAt = Camera.main;
         }
 
         void LateUpdate()
         {
-            // hacemos que el GUI mire a la camara todo el tiempo
-            transform.LookAt(cameraToLookAt.transform);
+            if (cameraToLookAt != null)
+            {
+                cameraToLookAt.Reset();
+
+                transform.LookAt(cameraToLookAt.transform);
+            }
         }
 
     }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TextTrigger : MonoBehaviour
 {
-    [SerializeField] Dialogue dialogue;
+    [SerializeField] Dialogue_new dialogue; // creates a slot for the non mono Dialogue
 	[SerializeField] float playerDistanceThreshold = 1f;
 
 	bool hasPlayed = false;
