@@ -17,6 +17,7 @@ namespace RPG.Characters
 		[SerializeField] float damageDelay = 0.5f;
 
 		[SerializeField] GameObject particlePrefab;
+		[SerializeField] GameObject parent;
 
 		public float GetTimeBetweenCycles()
 		{

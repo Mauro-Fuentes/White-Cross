@@ -306,16 +306,18 @@ ModelImporter:
       curves: []
       events:
       - time: 0.30891028
-        functionName: FootR
+        functionName: PlaySound
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 1362edef40f26994ca50572ff23df1b8,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
       - time: 0.80390245
-        functionName: FootL
+        functionName: PlaySound
         data: 
-        objectReferenceParameter: {instanceID: 0}
+        objectReferenceParameter: {fileID: 11500000, guid: 1362edef40f26994ca50572ff23df1b8,
+          type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
@@ -439,6 +441,7 @@ ModelImporter:
     globalScale: 0.01
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 0
     importBlendShapes: 1
     importCameras: 0
@@ -463,6 +466,9 @@ ModelImporter:
     normalImportMode: 2
     tangentImportMode: 2
     normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 2
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 1
   humanDescription:

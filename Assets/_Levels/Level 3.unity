@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -462,6 +462,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114863143504061376, guid: 8869f83227ba41d479d1b8793ad84920,
+        type: 2}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 9f96fc3dc260df848865e5363b5d890b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8869f83227ba41d479d1b8793ad84920, type: 2}
   m_IsPrefabAsset: 0
@@ -619,6 +625,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114863143504061376, guid: 8869f83227ba41d479d1b8793ad84920,
+        type: 2}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 9f96fc3dc260df848865e5363b5d890b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8869f83227ba41d479d1b8793ad84920, type: 2}
   m_IsPrefabAsset: 0
@@ -1745,6 +1757,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114863143504061376, guid: 8869f83227ba41d479d1b8793ad84920,
+        type: 2}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 9f96fc3dc260df848865e5363b5d890b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8869f83227ba41d479d1b8793ad84920, type: 2}
   m_IsPrefabAsset: 0
@@ -1941,6 +1959,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114863143504061376, guid: 8869f83227ba41d479d1b8793ad84920,
+        type: 2}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 9f96fc3dc260df848865e5363b5d890b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8869f83227ba41d479d1b8793ad84920, type: 2}
   m_IsPrefabAsset: 0
@@ -2145,6 +2169,12 @@ Prefab:
       propertyPath: m_Name
       value: Archer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 114863143504061376, guid: 8869f83227ba41d479d1b8793ad84920,
+        type: 2}
+      propertyPath: animatorOverrideController
+      value: 
+      objectReference: {fileID: 22100000, guid: 9f96fc3dc260df848865e5363b5d890b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8869f83227ba41d479d1b8793ad84920, type: 2}
   m_IsPrefabAsset: 0

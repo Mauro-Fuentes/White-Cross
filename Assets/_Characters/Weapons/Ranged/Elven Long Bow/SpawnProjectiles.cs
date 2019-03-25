@@ -5,9 +5,11 @@ using UnityEngine;
 public class SpawnProjectiles : MonoBehaviour
 {
 	public Transform firePoint;
+
 	public List<GameObject> listOfVfx = new List<GameObject> ();
 	private GameObject effectToSpawn;
 	GameObject vfx;
+	public GameObject target;
 
 	void Start () 
 	{
@@ -18,6 +20,7 @@ public class SpawnProjectiles : MonoBehaviour
 	{
 		if (Input.GetMouseButton (0))
 		{
+			UpdateRotatio();
 			SpawVFX();
 		}
 	}
@@ -26,9 +29,14 @@ public class SpawnProjectiles : MonoBehaviour
 	{
 		if (firePoint != null)
 		{
-			vfx = Instantiate (effectToSpawn, firePoint.transform.position, Quaternion.identity);
+			vfx = Instantiate (effectToSpawn, firePoint.transform.position, firePoint.transform.rotation);
 
 		}
+	}
+
+	void UpdateRotatio()
+	{
+		transform.LookAt(target.transform);
 	}
 
 

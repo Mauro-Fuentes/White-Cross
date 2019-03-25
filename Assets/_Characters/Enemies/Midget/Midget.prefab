@@ -4897,7 +4897,6 @@ GameObject:
   - component: {fileID: 114382672302106672}
   - component: {fileID: 114230896563405598}
   - component: {fileID: 114732471259276370}
-  - component: {fileID: 114121599183375726}
   m_Layer: 0
   m_Name: Midget
   m_TagString: Untagged
@@ -9701,7 +9700,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1247155071287864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.24, z: 0}
+  m_LocalPosition: {x: -0.19, y: 1.74, z: 0.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4793247803027916}
@@ -10060,20 +10059,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraToSearch: {fileID: 0}
   cameraToLookAt: {fileID: 0}
---- !u!114 &114121599183375726
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1956694254829998}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1101b02654cc65c4e992a7dc85416065, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firePoint: {fileID: 4937931047182760}
-  listOfVfx:
-  - {fileID: 1430976786359094, guid: d85a9abcca159d54299b1d553d67ea44, type: 2}
 --- !u!114 &114230896563405598
 MonoBehaviour:
   m_ObjectHideFlags: 1

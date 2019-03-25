@@ -5,13 +5,6 @@ using UnityEngine;
 public class MoveProjectile : MonoBehaviour
 {
 	public float speed;
-	public float fireRate;
-
-	void Start () 
-	{
-		
-	}
-
 
 	void Update () 
 	{

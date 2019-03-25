@@ -143,18 +143,25 @@ namespace RPG.Characters
 
 			StartCoroutine (DamageAfterDelay (damageDelay));
 
-			if (currentWeaponConfig.GetParticlePrefab() != null)
-			{
-				GetWeaponFXPrefab();
-			}
-			else
-			{
-				return;
-			}
+			GetWeaponFXPrefab();
 			
         }
 
+		public void GetWeaponFXPrefab()
+		{
+			var spawnpoint = currentWeaponConfig.gripTransform.transform;
+			// Debug.Log (spawnpoint.transform.position);
+			// Debug.Log (spawnpoint.transform.localPosition);
+			
+			var prefab = currentWeaponConfig.GetParticlePrefab();
+			
+			var clone = Instantiate (prefab, spawnpoint.transform, false);
 
+ 			clone.transform.parent = gameObject.transform;
+			clone.transform.position = gameObject.transform.position;
+			clone.transform.LookAt(target.transform);
+
+		}
         
 
         IEnumerator DamageAfterDelay(float delay)
@@ -201,16 +208,7 @@ namespace RPG.Characters
         }
 
 
-		public GameObject GetWeaponFXPrefab()
-		{
 
-			var originalObj = currentWeaponConfig.GetParticlePrefab();
-			
-			GameObject cloneObject = Instantiate (originalObj, transform.position, transform.localRotation);
-			cloneObject.transform.parent = transform;
-
-			return cloneObject;
-		}
 
 	}
 }

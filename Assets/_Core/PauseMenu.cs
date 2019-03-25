@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class PauseMenu : MonoBehaviour 
 {
 	private GameObject child;
-	[SerializeField] AudioClip pauseSound;
+	[SerializeField] AudioClip pauseSoundIn;
+	[SerializeField] AudioClip pauseSoundOFF;
 
 	public Animator animator;
 
@@ -22,7 +23,7 @@ public class PauseMenu : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.P))
 		{
-			gameObject.GetComponent<AudioSource>().PlayOneShot(pauseSound);
+			gameObject.GetComponent<AudioSource>().PlayOneShot(pauseSoundIn);
 			
 			if (!isInPause)
 			{ 
@@ -49,16 +50,18 @@ public class PauseMenu : MonoBehaviour
 		}
 	}
 
-    public void DeactiveFreeze()	// Método extraído de FreezeTime()... else;
-    {
+	public void DeactiveFreeze()	// Método extraído de FreezeTime()... else;
+	{
+		gameObject.GetComponent<AudioSource>().PlayOneShot(pauseSoundOFF);
+
 		animator.SetBool ("IN", false);
-       	Time.timeScale = 1f;
-      	AudioListener.pause = false;
+		Time.timeScale = 1f;
+		AudioListener.pause = false;
 		isInPause = !isInPause;
 
-    }
+	}
 
-    public void QuitGame ()
+  public void QuitGame ()
 	{	
 		Application.Quit();
 	}

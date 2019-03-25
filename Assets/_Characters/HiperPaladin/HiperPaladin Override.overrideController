@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: HiperPaladin Override
+  m_Controller: {fileID: 9100000, guid: a513b11882f1caa438674d22f183cd35, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400006, guid: 39d03f82786b57d41af8bd27bce84402, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: aba51471d6e800946afe92e31cf5521c, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: b1a5e04ae51004842aba06704a6c2903, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 663d022bb28516c48b78ed799c1d1335, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 1cb8ed3cbba15f0479fbae54e0a963df, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 981c60fc10a7ef04a906ca01105dc245, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 39130a949b1d94c4e8c7d685e4711a43, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f94c62a8b96f5a7469ce0da8ccac09b3, type: 3}

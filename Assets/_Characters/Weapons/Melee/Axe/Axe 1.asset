@@ -4,7 +4,8 @@
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -12,10 +13,12 @@ MonoBehaviour:
   m_Name: Axe 1
   m_EditorClassIdentifier: 
   gripTransform: {fileID: 4274081834610596, guid: b498458fd5bae4c458bb79e06117839e,
-    type: 2}
-  weaponPrefab: {fileID: 188770, guid: 2d992df65392ea8449df6870baaee082, type: 2}
+    type: 3}
+  weaponPrefab: {fileID: 188770, guid: 2d992df65392ea8449df6870baaee082, type: 3}
   attackAnimation: {fileID: 7400000, guid: f94c62a8b96f5a7469ce0da8ccac09b3, type: 3}
-  minTimeBetweenHits: 0.93
+  timeBetweenAnimationCycles: 0.5
   maxAttackRange: 1.68
-  additionalDamage: 40
+  additionalDamage: 20
   damageDelay: 0.5
+  particlePrefab: {fileID: 0}
+  parent: {fileID: 0}

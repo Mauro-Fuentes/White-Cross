@@ -5,20 +5,14 @@ using UnityEngine;
 public class WalkingSounds : MonoBehaviour
 {
 	[SerializeField] AudioClip[] walkingSounds;
-	AudioSource audioSource;
-
-	void Start () 
-	{
-		audioSource = GetComponent<AudioSource>();	
-
-	}
-
+	AudioSource audioSource1;
 
 	void PlayWalkSound () 
 	{
+		audioSource1 = GetComponent<AudioSource>();
 		var clip = walkingSounds [UnityEngine.Random.Range (0, walkingSounds.Length)];
 
-		audioSource.PlayOneShot(clip);
+		audioSource1.PlayOneShot(clip);
 
 	}
 
