@@ -8,10 +8,6 @@ namespace RPG.Characters
         public GameObject cameraToSearch;
         public Camera cameraToLookAt;
 
-
-        // public static UIFaceCamera uIFaceCameraSingleton {get; private set;}
-
-
         void Awake()
         {
             while (cameraToSearch == null)
@@ -22,21 +18,6 @@ namespace RPG.Characters
                     break;
                 }
             }
-
-            //cameraToSearch = GameObject.FindGameObjectWithTag ("MainCamera");
-      
-            
-            // if (uIFaceCameraSingleton == null)				// Si el tipo MyGameManager uIFaceCameraSingleton no está
-            // {	
-
-            //     uIFaceCameraSingleton = this;				// Hacer una instancia this (MyGameManager)
-
-            //     //DontDestroyOnLoad (uIFaceCameraSingleton);	            // Este gameObject
-            // }
-            // else
-            // {
-            //     Destroy(gameObject);	
-            // }
 
             cameraToLookAt = cameraToSearch.GetComponent<Camera>();
             

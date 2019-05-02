@@ -306,7 +306,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.30891028
-        functionName: PlaySound
+        functionName: PlayWalkSound
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 1362edef40f26994ca50572ff23df1b8,
           type: 3}
@@ -314,7 +314,7 @@ ModelImporter:
         intParameter: 0
         messageOptions: 0
       - time: 0.80390245
-        functionName: PlaySound
+        functionName: PlayWalkSound
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 1362edef40f26994ca50572ff23df1b8,
           type: 3}

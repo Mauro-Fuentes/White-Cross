@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.AI;
 using RPG.CameraUI;
+using UnityEngine.Audio;
 
 namespace RPG.Characters
 {
@@ -31,6 +32,8 @@ namespace RPG.Characters
         
         [Header("Audio")]
         [SerializeField] float audioSourceSpatialBlend = 1;
+        [SerializeField] float volume = 0.1f;
+        [SerializeField] AudioMixerGroup audioMixerGroup;
         
         [Header("Navmesh Agent")]
         [SerializeField] float navMeshAgentSteeringSpeed = 1.62f;
@@ -44,9 +47,13 @@ namespace RPG.Characters
 
         bool isAlive = true;
 
+        OpenChest openChest;	//TODO: //change name
+
         void Awake()
         {
             AddRequiredComponents();
+            
+            openChest = FindObjectOfType<OpenChest>();
         }
 
         private void AddRequiredComponents()
@@ -66,9 +73,10 @@ namespace RPG.Characters
             AudioSource audioSource = gameObject.AddComponent<AudioSource>();
             audioSource.playOnAwake = false;
             audioSource.spatialBlend = audioSourceSpatialBlend;
-
+            audioSource.volume = volume;
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
+            
             navMeshAgent = gameObject.AddComponent<NavMeshAgent>();
-
             navMeshAgent.updatePosition = true;
             navMeshAgent.updateRotation = true;
             navMeshAgent.stoppingDistance = navMeshAgentStoppingDistance;

@@ -10,6 +10,12 @@ public class ChangeLevelManager : MonoBehaviour
 
 	void OnTriggerEnter()
 	{
+		LoadNextScene();
+		
+	}
+
+	public void LoadNextScene()
+	{
 		SceneManager.LoadScene (nextLevel);
 	}
 

@@ -13,15 +13,32 @@ namespace RPG.Characters
 		SpecialAbilities abilities;
 		Character character;
 		WeaponSystem weaponSystem;
+		OpenChest openChest;	//TODO: //change name
 
 		void Start ()
         {
 			character = GetComponent<Character>();
 			abilities = GetComponent<SpecialAbilities>();
 			weaponSystem = GetComponent<WeaponSystem>();
+			openChest = FindObjectOfType<OpenChest>();
 
 			RegisterForMouseEvent();
+
         }
+
+		private void OnMouseOverCollectable(Interactable item)
+		{
+			if (Input.GetMouseButton(0))
+			{
+				character.SetDestination(item.transform.position); //TODO: // verificar si es buena idea ir hacia el interactable transform
+
+			}
+			else if (Input.GetMouseButton(0))
+			{
+				//StartCoroutine ();
+			}
+		}
+
 
 		private void RegisterForMouseEvent()
 		{
@@ -30,6 +47,7 @@ namespace RPG.Characters
 			cameraRaycaster = FindObjectOfType<CameraRaycaster>();
 			cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
 			cameraRaycaster.onMouseOverPotenciallyWalkable += onMouseOverPotenciallyWalkable;
+			cameraRaycaster.onMouseOverCollectables += OnMouseOverCollectable;
 		}
 
         void Update()
@@ -86,19 +104,6 @@ namespace RPG.Characters
 			}
 		}
 
-		IEnumerator MoveToTarget (GameObject target)
-		{
-			character.SetDestination(target.transform.position);
-
-			while (!IsTargetInRange(target))
-			{
-				yield return new WaitForEndOfFrame();
-			}
-
-			yield return new WaitForEndOfFrame();
-		}
-
-		
 		IEnumerator MoveAndAttack (EnemyAI enemy)
 		{
 			yield return StartCoroutine (MoveToTarget (enemy.gameObject));
@@ -111,5 +116,18 @@ namespace RPG.Characters
 			abilities.AttemptSpecialAbility(0, enemy.gameObject);
 		}
 
+
+
+		IEnumerator MoveToTarget (GameObject target)
+		{
+			character.SetDestination(target.transform.position);
+
+			while (!IsTargetInRange(target))
+			{
+				yield return new WaitForEndOfFrame();
+			}
+
+			yield return new WaitForEndOfFrame();
+		}
 	}
 }

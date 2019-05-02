@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+using System;
 
 public class PauseMenu : MonoBehaviour 
 {
@@ -14,6 +16,11 @@ public class PauseMenu : MonoBehaviour
 	bool isInPause;
 	const int WAIT_TWO_SECONDS = 2;
 
+	public void GoToMainMenu()
+	{
+		SceneManager.LoadScene (0);
+	}
+
 	void Update () 
 	{
 		FreezeTime();
@@ -23,13 +30,12 @@ public class PauseMenu : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.P))
 		{
-			gameObject.GetComponent<AudioSource>().PlayOneShot(pauseSoundIn);
-			
+
+			StartCoroutine (PlaySound());
+
 			if (!isInPause)
 			{ 
 				StartCoroutine (WaitUntilAnimIsDone());
-				
-				AudioListener.pause = true;
 				isInPause = !isInPause;
 			}
 			else
@@ -40,14 +46,17 @@ public class PauseMenu : MonoBehaviour
         
 	}
 
-	IEnumerator WaitUntilAnimIsDone()
+    IEnumerator WaitUntilAnimIsDone()
 	{
-		if(!isInPause)
-		{
-			animator.SetBool ("IN", true);
-			yield return new WaitForSecondsRealtime(WAIT_TWO_SECONDS);
-			Time.timeScale = 0f;
-		}
+		animator.SetBool ("IN", true);
+		yield return new WaitForEndOfFrame();
+	}
+
+	IEnumerator PlaySound()
+	{
+		var audiosource = gameObject.GetComponent<AudioSource>();
+		audiosource.PlayOneShot(pauseSoundIn);
+		yield return null;
 	}
 
 	public void DeactiveFreeze()	// Método extraído de FreezeTime()... else;
@@ -56,7 +65,6 @@ public class PauseMenu : MonoBehaviour
 
 		animator.SetBool ("IN", false);
 		Time.timeScale = 1f;
-		AudioListener.pause = false;
 		isInPause = !isInPause;
 
 	}

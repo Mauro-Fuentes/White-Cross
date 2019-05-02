@@ -10,7 +10,7 @@ namespace RPG.Characters
 
 		const string ATTACK_TRIGGER = "Attack";
 		const string DEFAULT_ATTACK_STATE = "DEFAULT ATTACK";
-		const float PARTICLE_CLEAN_UP_DELAY = 10f;
+		const float PARTICLE_CLEAN_UP_DELAY = 3f;
 
 		public abstract void Use(GameObject target = null);
 

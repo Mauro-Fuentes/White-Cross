@@ -20,7 +20,7 @@ public class OpenDoorTrigger : MonoBehaviour
 
     private void playSound()
     {
-        doorObject.GetComponent<AudioSource>().PlayOneShot(doorUpSound);
+		GetComponent<AudioSource>().PlayOneShot(doorUpSound);
     }
 
     private void AnimateDoor()

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40c29b3e9365ca448002cb8c586c6db, type: 3}
+  m_Name: Axe 1
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4274081834610596, guid: b498458fd5bae4c458bb79e06117839e,
+    type: 3}
+  weaponPrefab: {fileID: 188770, guid: 2d992df65392ea8449df6870baaee082, type: 3}
+  attackAnimation: {fileID: 7400000, guid: f94c62a8b96f5a7469ce0da8ccac09b3, type: 3}
+  timeBetweenAnimationCycles: 2.42
+  maxAttackRange: 2.78
+  additionalDamage: 18.9
+  damageDelay: 2.4
+  particlePrefab: {fileID: 0}
+  parent: {fileID: 0}

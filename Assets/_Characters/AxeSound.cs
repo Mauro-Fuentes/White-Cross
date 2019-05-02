@@ -7,6 +7,9 @@ public class AxeSound : MonoBehaviour
 	[SerializeField] AudioClip[] axeSounds;
 	AudioSource audioSource;
 
+	[SerializeField] Transform particles1;
+	[SerializeField] Transform place;
+
 	void PlaySound() 
 	{
 		audioSource = GetComponent<AudioSource>();
@@ -14,5 +17,12 @@ public class AxeSound : MonoBehaviour
 		audioSource.PlayOneShot(clip);
 	}
 
+	void SpawnAttackParticle()
+	{
+		// particles1 = GetComponent<Transform>();
+		// var playAttackParticle = Instantiate ( particles1, transform.position, particles1.transform.rotation);
+
+		var playAttackParticle = Instantiate ( particles1, place.transform.position, particles1.transform.rotation);
+	}
 }
 

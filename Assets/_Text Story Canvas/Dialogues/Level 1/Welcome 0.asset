@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8835020c5c1c9343b1712fb094bcb88, type: 3}
+  m_Name: Welcome 0
+  m_EditorClassIdentifier: 
+  sentences:
+  - You shouldn't have trusted. Now, you are dead...
+  - "But death is not what people think it is... \n\nGet back your scythe to get revenge
+    of those who put you in here."
+  - Learn quickly! Use 1 and 2 you trigger your dead powers.
+  - Check your mana. It's your only friend in this place!

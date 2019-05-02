@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b40c29b3e9365ca448002cb8c586c6db, type: 3}
+  m_Name: Mandoble_Sword
+  m_EditorClassIdentifier: 
+  gripTransform: {fileID: 4274081834610596, guid: 9920ec96096c94c4b8ffbabfe1f26ef2,
+    type: 3}
+  weaponPrefab: {fileID: 193552, guid: 4cf102491b098e445b70ea238edd07e2, type: 3}
+  attackAnimation: {fileID: 7400000, guid: 5354b4f390c868842b96d7c4c201bdf8, type: 3}
+  timeBetweenAnimationCycles: 0.5
+  maxAttackRange: 2
+  additionalDamage: 10
+  damageDelay: 0.87
+  particlePrefab: {fileID: 0}
+  parent: {fileID: 0}

@@ -1169,6 +1169,9 @@ MonoBehaviour:
   colliderRadius: 0.22
   colliderHeigth: 2.07
   audioSourceSpatialBlend: 1
+  volume: 0.2
+  audioMixerGroup: {fileID: 243340431570809408, guid: c8b950514ab04884c868eb9522ed1dfc,
+    type: 2}
   navMeshAgentSteeringSpeed: 1.62
   navMeshAgentStoppingDistance: 1.44
   navMeshAgentBaseOffset: -0.02
@@ -1199,7 +1202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilities:
   - {fileID: 11400000, guid: 796fc6b53d1a73546b90c40a889ed781, type: 2}
-  - {fileID: 11400000, guid: b6f0cef5d45ceec4fa96240bce7e2ba2, type: 2}
+  - {fileID: 11400000, guid: 09c69db2e0ee0df4b93847fc3079f1cf, type: 2}
   - {fileID: 11400000, guid: 114517c2a4bfc0644a00b578c5045b50, type: 2}
   GreenOrbBar: {fileID: 0}
   maxEnergyPoints: 10
@@ -1220,14 +1223,14 @@ MonoBehaviour:
   maxHealthPoints: 1000
   healthBar: {fileID: 0}
   damageSounds:
-  - {fileID: 8300000, guid: a7d3d3388790742c090ac439e1ddebd8, type: 3}
+  - {fileID: 8300000, guid: 0ba803afa65161e47bcea1cc7732b858, type: 3}
   - {fileID: 8300000, guid: f97c865d49804004dac381dd94ed13e8, type: 3}
-  - {fileID: 8300000, guid: 8131f3a2f723247de81af1292efd7a7d, type: 3}
-  - {fileID: 8300000, guid: 27292d3d3d56142d7bc31c2e8311497f, type: 3}
+  - {fileID: 8300000, guid: bee54a7e575abb64f84a937bd269687c, type: 3}
+  - {fileID: 8300000, guid: 9353553b39f95a34984431e6f4e5f9f1, type: 3}
   - {fileID: 8300000, guid: d8b26924be071457a89c60a1cf2bbd1c, type: 3}
-  - {fileID: 8300000, guid: bc4c2a159f0a54c848b39ae83f50bbf8, type: 3}
+  - {fileID: 8300000, guid: d759c1caf5f4a4f4c92a391c3f98ebf9, type: 3}
   deathSounds:
-  - {fileID: 8300000, guid: 57428ac19514b49d08efe0879ef60835, type: 3}
+  - {fileID: 8300000, guid: 0d3d212a0f0cd7b48b480396cd0a1596, type: 3}
   particlePrefab: {fileID: 100000, guid: 2c32987c2bc01844a94adfb917dd677d, type: 3}
 --- !u!114 &114050202196007450
 MonoBehaviour:
@@ -1242,7 +1245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 20
-  currentWeaponConfig: {fileID: 11400000, guid: 0ae8f8a86cdb278488657f24eac86a69,
+  currentWeaponConfig: {fileID: 11400000, guid: 996bfa920c311e945b38c4ae51c7b964,
     type: 2}
   speed: 200
 --- !u!114 &114656274189495752
@@ -1288,7 +1291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470355784716680}
   m_LocalRotation: {x: 0.50025403, y: -0.49974585, z: 0.50025403, w: 0.49974585}
-  m_LocalPosition: {x: 0.001, y: 4.015, z: 0}
+  m_LocalPosition: {x: 0.001, y: 3.894, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4552909518099928}
@@ -1305,8 +1308,8 @@ Light:
   serializedVersion: 8
   m_Type: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 2.59
-  m_Range: 11.084399
+  m_Intensity: 3.16
+  m_Range: 4.411481
   m_SpotAngle: 43.72402
   m_CookieSize: 10
   m_Shadows:

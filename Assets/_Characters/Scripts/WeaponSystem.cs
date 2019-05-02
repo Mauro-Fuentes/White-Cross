@@ -10,20 +10,20 @@ namespace RPG.Characters
 	
 		[SerializeField] float baseDamage = 10f;
 		[SerializeField] WeaponConfig currentWeaponConfig;	// tipo ScriptableObject
+        [SerializeField] Transform spawnPoint;
 
-		public float speed = 200f;
+        public float speed = 200f;
+        float timeToDestroyParticle = 3;
+        float lastHitTime;
 
-		GameObject target;
+        GameObject target;
 		GameObject weaponObject;
 		Animator animator;	
 		Character character;
+        Vector3 clickPoint;
 
-		const string DEFAULT_ATTACK = "DEFAULT ATTACK";
+        const string DEFAULT_ATTACK = "DEFAULT ATTACK";
 		const string ATTACK_TRIGGER = "Attack";
-
-		float lastHitTime;
-
-		Vector3 clickPoint;
 
 		void Start () 
 		{
@@ -36,10 +36,10 @@ namespace RPG.Characters
 
 		void Update()
 		{
-			bool targetIsDead;	// inicialise these pair of bools
+			bool targetIsDead;
 			bool targetIsOutOfRange;
 
-			// if there is no target, those bools are false. Neither the target is dear or out of range.
+			// if there is no target, those bools are false. Neither the target is dead or out of range.
 			if (target == null)
 			{
 				targetIsDead = false;
@@ -53,7 +53,7 @@ namespace RPG.Characters
 				var targetHealth = target.GetComponent<HealthSystem>().healthAsPercentage;
 				targetIsDead = targetHealth <= Mathf.Epsilon;
 
-				// testi if our of range
+				// test if our of range
 
 				var distanceToTarget = Vector3.Distance(transform.position, target.transform.position);
  				targetIsOutOfRange = distanceToTarget > currentWeaponConfig.GetMaxAttackRange();
@@ -113,8 +113,10 @@ namespace RPG.Characters
 			{
 				// take the current animation of that weapon
 				var animationClip = currentWeaponConfig.GetAttackAnimClip();
-				// how long is the animation
+
+				// length of animation
 				float animationClipTime = animationClip.length / character.GetAnimSpeedMultiplier();
+
 				// what's the time
 				float timeToWait = animationClipTime + currentWeaponConfig.GetTimeBetweenCycles();
 
@@ -143,26 +145,22 @@ namespace RPG.Characters
 
 			StartCoroutine (DamageAfterDelay (damageDelay));
 
-			GetWeaponFXPrefab();
+			//GetWeaponFXPrefab();
 			
         }
 
 		public void GetWeaponFXPrefab()
 		{
-			var spawnpoint = currentWeaponConfig.gripTransform.transform;
-			// Debug.Log (spawnpoint.transform.position);
-			// Debug.Log (spawnpoint.transform.localPosition);
-			
+			spawnPoint = GetComponent<Transform>();
+
 			var prefab = currentWeaponConfig.GetParticlePrefab();
 			
-			var clone = Instantiate (prefab, spawnpoint.transform, false);
+			var clone = Instantiate (prefab, spawnPoint, instantiateInWorldSpace: false);
 
- 			clone.transform.parent = gameObject.transform;
-			clone.transform.position = gameObject.transform.position;
-			clone.transform.LookAt(target.transform);
+            //var clone = Instantiate(prefab, spawnPoint.position, spawnPoint.rotation);
 
-		}
-        
+            Destroy(clone, timeToDestroyParticle);
+        }
 
         IEnumerator DamageAfterDelay(float delay)
         {
@@ -181,9 +179,7 @@ namespace RPG.Characters
 			{
 				var animatorOverrideController = character.GetAnimatorOverrideController();			
 				animator.runtimeAnimatorController = character.GetAnimatorOverrideController();	// el runtimeAnimatorController lo alojas en la variable Animator del scope de la clase.
-				animatorOverrideController [DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip(); 	// access animations list, find the one called Default attack and change ir... override
-				
-
+				animatorOverrideController [DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip(); 	// access animations list, find the one called Default attack and change it... override
 			}
         }
 
@@ -206,9 +202,6 @@ namespace RPG.Characters
 			// normal damage
 			return baseDamage + currentWeaponConfig.GetAdditionalDamage();
         }
-
-
-
 
 	}
 }

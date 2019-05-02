@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 namespace RPG.Characters
 {	
@@ -28,9 +29,12 @@ namespace RPG.Characters
 		Animator animator;	
 		AudioSource audioSource = null;
 		Character characterMovement;
-		
 
-		public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
+        bool characterIsDead;
+
+        public UnityEvent tellMeTheBossDiedEvent;
+
+        public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
 		void Start () 
 		{
@@ -57,7 +61,6 @@ namespace RPG.Characters
 
 		public void TakeDamage(float damage)
 		{	
-			//bool characterDies = (currentHealthPoints - damage <= 0);
 
 			// Reduce health
 			currentHealthPoints = Mathf.Clamp (currentHealthPoints - damage, 0f, maxHealthPoints);
@@ -70,7 +73,8 @@ namespace RPG.Characters
 			if (currentHealthPoints <= 0)
 			{
 				StartCoroutine(KillCharacter());
-			}
+                tellMeTheBossDiedEvent.Invoke(); // Invoke UnityEvent
+            }
 			
 		}
 

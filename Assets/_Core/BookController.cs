@@ -10,10 +10,10 @@ public class BookController : MonoBehaviour
 
     [SerializeField] public Canvas myCanvas;
 
-    // private
+
     bool hasPlayed = false;
     AudioSource audioSource;
-    GameObject player; // will only 
+    GameObject player;
 
     void Start()
     {
@@ -33,7 +33,6 @@ public class BookController : MonoBehaviour
             if (distanceToPlayer <= playerDistanceThreshold)
             {
                 RequestPlayAudioClip();
-
             }
 
         }
