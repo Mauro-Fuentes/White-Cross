@@ -8,24 +8,23 @@ public class TimelineController : MonoBehaviour
 {
 	public List<PlayableDirector> playableDirectors;
 
-	//public SceneFades sceneFadesAccess;
-
 	public void OnTriggerEnter()
 	{
-		foreach (PlayableDirector playableDirector in playableDirectors)
-		{
-			playableDirector.Play();
-		}
+        if (playableDirectors.Count == 0)
+        {
+            Debug.Log("Error");
+        }
+
+        else
+        {
+            foreach (PlayableDirector playableDirector in playableDirectors)
+            {
+                playableDirector.Play();
+            }
+        }
+
 		
 	}
 
-	void OnEnable()
-	{
-		//Debug.Log ("STOP PLAYING");
-		//sceneFadesAccess = GetComponent<SceneFades>();
-		//sceneFadesAccess.FadeCanvasGroup();
 
-		var a = GetComponent<ChangeLevelManager>();
-		a.LoadNextScene();
-	}
 }

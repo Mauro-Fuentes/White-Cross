@@ -4,12 +4,12 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System;
 
-public class ChangeLevelManager : MonoBehaviour
+public class LastLevel : MonoBehaviour
 {
-	public string nextLevel;
+    public string nextLevel;
 
-	void OnTriggerEnter()
-	{
+    void OnEnable()
+    {
         SceneManager.LoadScene(nextLevel);
     }
 

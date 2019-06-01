@@ -186,8 +186,8 @@ MonoBehaviour:
 
 
 
-    This game was entirely developed with free assests and royal free content except
-    for the arrangement, code, and FX.'
+    This game was almost entirely developed with free assests and royal free content
+    except for the arrangement, code, and some FX.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -256,10 +256,10 @@ MonoBehaviour:
   m_margin: {x: -155.43683, y: 5.351514, z: 1.281081, w: -166.34796}
   m_textInfo:
     textComponent: {fileID: 35271663}
-    characterCount: 218
+    characterCount: 230
     spriteCount: 0
-    spaceCount: 40
-    wordCount: 34
+    spaceCount: 42
+    wordCount: 36
     linkCount: 0
     lineCount: 16
     pageCount: 1
