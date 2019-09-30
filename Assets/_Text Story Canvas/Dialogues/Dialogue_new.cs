@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Dialogue new")]		// As it's not a mono we need this in order to see it on the inspector.
+[CreateAssetMenu (menuName = "Dialogue new")]
 public class Dialogue_new : ScriptableObject
 {
 	[TextArea(3, 10)]

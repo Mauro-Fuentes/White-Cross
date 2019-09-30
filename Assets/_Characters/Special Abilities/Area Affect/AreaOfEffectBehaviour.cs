@@ -18,10 +18,7 @@ public class AreaOfEffectBehaviour : AbilityBehaviour
         // static sphere cast for targets
         RaycastHit[] hits = Physics.SphereCastAll
         (   
-            transform.position, 
-            (config as AreaOfEffectConfig).GetRadius(), 
-            Vector3.up, 
-            (config as AreaOfEffectConfig).GetRadius()
+            transform.position, (config as AreaOfEffectConfig).GetRadius(), Vector3.up, (config as AreaOfEffectConfig).GetRadius()
         );
 
         // for every hit I got in array hits
